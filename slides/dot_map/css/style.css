@@ -1,9 +1,11 @@
 body {
-  background-color: #111111;
+  /* background-color: #111111; */
+  background-color: white;
 }
 
 .cover {
-  fill: #111111;
+  /* fill: #111111; */
+  fill: white;
 }
 
 circle,
@@ -37,14 +39,17 @@ path {
 
 
 .land {
-  fill: #2A3F68;
-  stroke: white;
+  /* fill: #2A3F68; */
+  /* fill: #2A3F68; */
+  fill: steelblue;
+  stroke: #111;
   stroke-width: 2px;
 }
 
 .symbol {
   /* fill: rgb(22, 162, 122); */
-  fill: rgb(255, 111, 64);
+  /* fill: rgb(255, 111, 64); */
+  fill: #FA6900;
   
   /* fill: steelblue; */
   fill-opacity: .7;
@@ -57,7 +62,7 @@ path {
   /* fill: rgb(22, 162, 122); */
   fill: none;
   
-  stroke: #fff;
+  stroke: #FA6900;
   stroke-width: 3;
   pointer-events: none;
   

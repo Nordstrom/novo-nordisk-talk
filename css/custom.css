@@ -1,5 +1,10 @@
+body {
+  font-family: "Brandon Grotesque",sans-serif;
+}
+
 img.logo {
   background-color: transparent !important;
+  /* background-color: white; */
   border: none !important;
   margin: 0px !important;
 }

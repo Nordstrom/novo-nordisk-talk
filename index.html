@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/theme/nordstrom.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -40,15 +40,19 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<img class="logo" src="images/data_lab_logo.png"></img>
+					<img id="logo" class="logo" src="images/logo_light.png"></img>
 					<h3>How Nordstrom utilizes humans as learning machines to blend brick-and-mortar with online commerce</h3>
 					<p>
 						<small>
-							<a href="">Erin Shellman - Data Scientist</a><br/>
+							<a href="">Erin Shellman PhD - Data Scientist</a><br/>
 							<a href="">David Von Lehman - Developer</a>
 						</small>
 					</p>
 				</section>
+
+        <section data-background="#F9F5EC">
+          <canvas id="nord_hist" width="960" height="860"></canvas>
+        </section>
 
         <section>
           <iframe class="stretch" src="slides/dot_map/index.html"></iframe>
@@ -102,12 +106,43 @@
 			});
 
 		</script>
-		<script type="text/javascript" src="js/d3.v2.js"></script>
+		<!-- <script type="text/javascript" src="js/d3.v2.js"></script> -->
+		<script type="text/javascript" src="js/d3.v3.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 		<script>
 			var w = 960,
 	    h = 700,
 	    z = d3.scale.category20c(),
 	    i = 0;
+
+      var canvas = document.getElementById('nord_hist');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 0, 0);
+      };
+      imageObj.src = 'images/comic_small.jpg'
+
+      var x = 0;
+      var y = 0;
+      var ease = d3.ease("cubic-in-out");
+      var timeInc = 1 / 120.0;
+      var refreshIntervalId;
+      var time = 0;
+      function draw() {
+        time += timeInc;
+        var pos = ease(time) * -1090;
+        context.drawImage(imageObj, pos, 0);
+        if (pos <= -1090) {
+          clearInterval(refreshIntervalId);
+        }
+      }
+
+      $('#nord_hist').on("click", function() { 
+          refreshIntervalId = setInterval(draw, 30);
+       });
 
 			var svg = d3.select("#d3Circles").append("svg:svg")
 			    .attr("width", w)
@@ -116,7 +151,7 @@
 			    .on("mousemove", particle);
 
 			function particle() {
-			  var m = d3.svg.mouse(this);
+			  var m = d3.mouse(this);
 
 			  svg.append("svg:circle")
 			      .attr("cx", m[0])
