@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/reveal.min.css">
+  <link rel="stylesheet" href="/css/theme/nordstrom.css" id="theme">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <style>
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .bar {
+    fill: steelblue;
+  }
+
+  .x.axis path {
+    display: none;
+  }
+
+  .legend line {
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .legend text {
+    font-size: 14px;
+  }
+
+  g.x.axis text {
+    font-size: 14px;
+  }
+  </style>
+</head>
+<body>
+  <script src="/js/d3.v3.min.js"></script>
+  <div class="reveal">
+    <h2>Team Skills</h2>
+    <div id="chart" />
+    <script src="team_skills.js"></script>
+  </div>
+</body>
+</html>
