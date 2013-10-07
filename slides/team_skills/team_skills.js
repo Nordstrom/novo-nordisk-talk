@@ -1,6 +1,6 @@
 var margin = {
   top: 20,
-  right: 100,
+  right: 160,
   bottom: 30,
   left: 0
 },
