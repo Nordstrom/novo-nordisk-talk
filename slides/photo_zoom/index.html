@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/reveal.min.css">
+  <link rel="stylesheet" href="/css/theme/nordstrom.css" id="theme">
+  <link rel="stylesheet" href="/css/custom.css">
+  <script src="seadragon-min.js"></script>
+  <style>
+    #container {
+      width: auto;
+      height: 500px;
+      background-color: black;
+      border: 1px solid black;
+      color: white;   /* for error messages */
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <h3>Photo Corpus</h3>
+    <div id="container"></div>
+  </div>
+  <script>
+    Seadragon.Config.imagePath = "controls/";
+
+    Seadragon.Utils.addEvent(window, "load", function() {
+      var viewer = new Seadragon.Viewer("container");
+      viewer.openDzi("dzc_output.xml");
+    });
+  </script>
+</body>
+</html>

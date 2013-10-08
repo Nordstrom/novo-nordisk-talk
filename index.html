@@ -77,6 +77,10 @@
           <img src="images/tool_logos.png" />
         </section>        
 
+        <section>
+          <iframe class="stretch" src="slides/photo_zoom/index.html"></iframe>
+        </section>
+
 				<section>
 					<h2>Heads Up</h2>
 					<p>
@@ -88,12 +92,7 @@
 						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
 					</aside>
 				</section>
-
-				<!-- Test of embedded d3 in a reveal.js slide -->
-				<section>
-					<h2>Mouse around with D3</h2>
-					<div class="stretch" id="d3Circles"></div>
-	    	</section>
+				
 			</div>
 		</div>
 
@@ -106,7 +105,7 @@
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
-				progress: true,
+				progress: false,
 				history: true,
 				center: true,
 
@@ -162,29 +161,6 @@
       $('#nord_hist').on("click", function() { 
           refreshIntervalId = setInterval(draw, 30);
        });
-
-			var svg = d3.select("#d3Circles").append("svg:svg")
-			    .attr("width", w)
-			    .attr("height", h)
-			    .style("pointer-events", "all")
-			    .on("mousemove", particle);
-
-			function particle() {
-			  var m = d3.mouse(this);
-
-			  svg.append("svg:circle")
-			      .attr("cx", m[0])
-			      .attr("cy", m[1])
-			      .attr("r", 1e-6)
-			      .style("stroke", z(++i))
-			      .style("stroke-opacity", 1)
-			    .transition()
-			      .duration(2000)
-			      .ease(Math.sqrt)
-			      .attr("r", 100)
-			      .style("stroke-opacity", 1e-6)
-			      .remove();
-			}
 		</script>
 	</body>
 </html>
