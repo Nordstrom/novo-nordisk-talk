@@ -47,6 +47,7 @@ Reveal.addEventListener( 'ready', function( event ) {
   //
   // this functionality requires the iframe to be listening for 
   // messages using addEventListener()
+  // derived from: http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes
   function startDotMap() {
     iframe = document.getElementById('dotmap_iframe');
     iframe.contentWindow.postMessage('start', '*');
