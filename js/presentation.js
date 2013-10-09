@@ -39,6 +39,19 @@ Reveal.addEventListener( 'ready', function( event ) {
   }
   // DONE - Nordstrom Comic Image 
 
+  // postMessage() sub-steps
+  // example of using postMessage() to send a message to an iframe
+  // here, we send the 'start' message to the iframe. 
+  // the second argument indicates the origin server of the iframe.
+  // a '*' indicates it could be anything - probably our best bet.
+  //
+  // this functionality requires the iframe to be listening for 
+  // messages using addEventListener()
+  function startDotMap() {
+    iframe = document.getElementById('dotmap_iframe');
+    iframe.contentWindow.postMessage('start', '*');
+  }
+
   // This event listener gets triggered for each 'fragment' clicked through
   // a fragment is typically used to show another bullet point on the same slide
   // ex: http://lab.hakim.se/reveal-js/#/19
@@ -47,9 +60,12 @@ Reveal.addEventListener( 'ready', function( event ) {
   Reveal.addEventListener( 'fragmentshown', function(event) {
     fragmentId = $(event.fragment).attr("id")
 
-    // start Nordstrom Comic Image animation
     if(fragmentId == "nordstrom_comic_start") {
+      // start Nordstrom Comic Image animation
       startComic();
+    } else if (fragmentId == 'dot_map_start') {
+      // start dot map dots
+      startDotMap();
     }
   }, false );
 

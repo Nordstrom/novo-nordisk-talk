@@ -171,7 +171,6 @@ WorldPlot = () ->
 
       # d3.timer(redraw)
 
-      d3.timer(addData, 200)
 
       
       # g = svg.select("g")
@@ -180,6 +179,8 @@ WorldPlot = () ->
       points = g.append("g").attr("id", "vis_points")
 
 
+  chart.start = () ->
+    d3.timer(addData, 200)
 
   chart.height = (_) ->
     if !arguments.length
@@ -232,3 +233,16 @@ $ ->
     .defer(d3.json, "data/stores.json")
     .await(display)
 
+  # function that is executed once a message is sent.
+  # Here, we check the content of the message - to ensure
+  # it is what we expect. 
+  #
+  # We could use the event's .data attribute to allow for
+  # multiple sub-steps to be sent to the content of an iframe
+  startPlot = (e) ->
+    action = e.data
+    if action == 'start'
+      worldplot.start()
+
+  # listen for postMessage() messages 
+  window.addEventListener('message', startPlot, false)
