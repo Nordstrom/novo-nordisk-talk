@@ -52,8 +52,9 @@ path {
   fill: #FA6900;
   
   /* fill: steelblue; */
-  fill-opacity: .7;
+  fill-opacity: 1;
   stroke: #fff;
+  stroke-width: 0;
   pointer-events: none;
   
 }
@@ -66,6 +67,16 @@ path {
   stroke-width: 3;
   pointer-events: none;
   
+}
+
+.city {
+  fill: #FA6900;
+  
+  /* fill: steelblue; */
+  fill-opacity: .8;
+  stroke: #fff;
+  stroke-width: 0;
+  pointer-events: none;
 }
 
 
