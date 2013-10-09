@@ -22,6 +22,7 @@ Plot = () ->
   xAxis = d3.svg.axis()
     .scale(xScale)
     .tickSize(-height)
+    .tickFormat(d3.time.format('%b'))
     # .tickFormat(d3.time.format('%b %Y'))
     # https://github.com/mbostock/d3/wiki/Time-Formatting
   
