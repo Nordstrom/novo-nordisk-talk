@@ -30,7 +30,7 @@ var svg = d3.select("#chart").append("svg")
 
 d3.csv("data.csv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) {
-    return key !== "TeamMember";
+    return key !== "TeamMember" && key !== "order";
   }));
 
   data.forEach(function(d) {
