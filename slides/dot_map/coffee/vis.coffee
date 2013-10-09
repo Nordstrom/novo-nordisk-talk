@@ -13,8 +13,17 @@ WorldPlot = () ->
   g = null
   points = null
   feature = null
+  cities = null
+
+  minRadius = 0
+  maxRadius = 100
+
+  rScale = d3.scale.sqrt().range([minRadius, maxRadius]).domain([0, 200])
+  
 
   mworld = null
+  mstores = null
+  locations = {}
 
   projection = d3.geo.azimuthalEqualArea()
     # .scale(radius)
@@ -32,23 +41,34 @@ WorldPlot = () ->
     .extent([[-140, 20], [-60, 60]])
     .step([2, 2])
 
-  click = (d) ->
-    o1 = projection.invert(d3.mouse(this))
-    lat = o1[0]
-    lon = o1[1]
+  # redraw = () ->
+  #   dt = Date.now() - time
+  #   projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt])
+  #   feature.attr("d", path)
+  #   points.selectAll(".symbol").attr("d", path)
+  #   
+  #   false
 
+  updateCities = () ->
+    c = cities.selectAll(".city")
+      .data(d3.values(locations))
 
-  redraw = () ->
-    dt = Date.now() - time
-    projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt])
-    feature.attr("d", path)
-    points.selectAll(".symbol").attr("d", path)
-    
-    false
+    c.enter()
+      .append("circle")
+      .attr("class", "city")
+      .attr("r", (d) -> rScale(d.count))
+      .attr("cx", (d,i) -> projection([d.lng, d.lat])[0])
+      .attr("cy", (d,i) -> projection([d.lng, d.lat])[1])
 
+    c.attr("r", (d) -> rScale(d.count))
+      
   addData = () ->
     i = Date.now()
-    data.push({"type":"Feature", "id":i, "geometry":{"type":"Point", "coordinates":[getRandomInRange(-180, 180, 3), getRandomInRange(-180, 180, 3)]},"properties":{'time':Date.now()}})
+    randomStore = d3.values(locations)[Math.floor(Math.random() * d3.values(locations).length)]
+    lat = randomStore.lat
+    lon = randomStore.lng
+    data.push({"type":"Feature", "id":i, "geometry":{"type":"Point", "coordinates":[lon,lat]},"properties":{'time':Date.now()}})
+    randomStore.count += 1
 
     data = data.filter (d) ->
       tmin = Date.now() - d.properties.time
@@ -66,21 +86,34 @@ WorldPlot = () ->
       .attr("cx", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0])
       .attr("cy", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1])
       .attr("r", 0)
+      .attr("stroke-opacity", 1)
 
     temps.transition()
-      .duration(200)
-      .attr("r", 30)
+      .duration(600)
+      .attr("r", 80)
       .attr("cx", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0])
       .attr("cy", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1])
+      .attr("stroke-opacity", 0.2)
       .remove()
       
 
     p.exit().remove()
+    updateCities()
 
     false
 
+  parseStores = (stores) ->
+    locs = {}
+    stores.forEach (s) ->
+      locs[s.store] = s
+      locs[s.store].count = 0
+    locs
+
+
   chart = (selection) ->
     selection.each (rawData) ->
+
+      locations = parseStores(mstores)
 
       # rawData = rawData.filter((d) -> d.country ).filter (d) -> +d.count > 5
 
@@ -99,10 +132,10 @@ WorldPlot = () ->
         .attr("width", width)
         .attr("height", height)
 
-      svg.append("defs").append("path")
-        .datum({type: "Sphere"})
-        .attr("id", "sphere")
-        .attr("d", path)
+      # svg.append("defs").append("path")
+      #   .datum({type: "Sphere"})
+      #   .attr("id", "sphere")
+      #   .attr("d", path)
 
       svg.append("use")
         .attr("class", "stroke")
@@ -118,7 +151,6 @@ WorldPlot = () ->
         .attr("class", "cover")
         .attr("width", width)
         .attr("height", height)
-
 
 
       g.append("path")
@@ -144,7 +176,9 @@ WorldPlot = () ->
       
       # g = svg.select("g")
 
+      cities = g.append("g").attr("id", "vis_cities")
       points = g.append("g").attr("id", "vis_points")
+
 
 
   chart.height = (_) ->
@@ -166,6 +200,12 @@ WorldPlot = () ->
     mworld = _
     chart
 
+  chart.stores = (_) ->
+    if !arguments.length
+      return stores
+    mstores = _
+    chart
+
   return chart
 
 # root.WorldPlot = WorldPlot
@@ -179,14 +219,16 @@ $ ->
 
   worldplot = WorldPlot()
 
-  display = (error, world, top_tweets) ->
+  display = (error, world, stores) ->
     console.log(error)
 
     worldplot.world(world)
+    worldplot.stores(stores)
     plotData("#vis", [1,2,3], worldplot)
 
 
   queue()
     .defer(d3.json, "data/us.json")
+    .defer(d3.json, "data/stores.json")
     .await(display)
 
