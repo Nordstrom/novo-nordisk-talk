@@ -4,11 +4,10 @@ Reveal.addEventListener( 'ready', function( event ) {
   z = d3.scale.category20c(),
   i = 0;
 
+  // For the Nordstrom Comic Image
   var canvas = document.getElementById('nord_hist');
   var context = canvas.getContext('2d');
   var imageObj = new Image();
-
-
   imageObj.onload = function() {
     context.drawImage(imageObj, 0, 0);
   };
@@ -32,5 +31,12 @@ Reveal.addEventListener( 'ready', function( event ) {
   $('#nord_hist').on("click", function() { 
     refreshIntervalId = setInterval(draw, 30);
   });
+  Reveal.addEventListener( 'fragmentshown', function(event) {
+    fragmentId = $(event.fragment).attr("id")
+    if(fragmentId == "nordstrom_comic_start") {
+      refreshIntervalId = setInterval(draw, 30);
+    }
+  }, false );
+  // DONE - Nordstrom Comic Image 
 
 });
