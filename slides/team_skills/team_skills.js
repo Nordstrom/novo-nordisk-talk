@@ -1,6 +1,6 @@
 var margin = {
   top: 20,
-  right: 160,
+  right: 220,
   bottom: 30,
   left: 0
 },
@@ -92,7 +92,7 @@ d3.csv("data.csv", function(error, data) {
     .enter().append("g")
     .attr("class", "legend")
     .attr("transform", function(d) {
-      return "translate(" + (x.rangeBand() - 10) + "," + y((d.y0 + d.y1) / 2) + ")";
+      return "translate(" + (x.rangeBand() + 5) + "," + y((d.y0 + d.y1) / 2) + ")";
     });
 
   legend.append("line")
