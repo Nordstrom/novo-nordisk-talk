@@ -48,9 +48,9 @@ Reveal.addEventListener( 'ready', function( event ) {
   // this functionality requires the iframe to be listening for 
   // messages using addEventListener()
   // derived from: http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes
-  function startDotMap() {
-    iframe = document.getElementById('dotmap_iframe');
-    iframe.contentWindow.postMessage('start', '*');
+  function sendIframe(iframeId, message) {
+    iframe = document.getElementById(iframeId);
+    iframe.contentWindow.postMessage(message, '*');
   }
 
   // This event listener gets triggered for each 'fragment' clicked through
@@ -66,7 +66,10 @@ Reveal.addEventListener( 'ready', function( event ) {
       startComic();
     } else if (fragmentId == 'dot_map_start') {
       // start dot map dots
-      startDotMap();
+      sendIframe('dotmap_iframe', 'start');
+    } else if (fragmentId == 'timeline_start') {
+      // start dot map dots
+      sendIframe('timeline_iframe', 'start');
     }
   }, false );
 
