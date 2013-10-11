@@ -10,24 +10,19 @@
     #container {
       width: auto;
       height: 500px;
-      background-color: black;
-      border: 1px solid black;
+      background-color: #FFF;
+      /*border: 1px solid black;  */
       color: white;   /* for error messages */
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="reveal">
     <h3>Photo Corpus</h3>
-    <div id="container"></div>
+    <div id="container">
+      <script src="zoom.it.js"></script>
+    </div>
   </div>
-  <script>
-    Seadragon.Config.imagePath = "controls/";
-
-    Seadragon.Utils.addEvent(window, "load", function() {
-      var viewer = new Seadragon.Viewer("container");
-      viewer.openDzi("dzc_output.xml");
-    });
-  </script>
 </body>
 </html>
