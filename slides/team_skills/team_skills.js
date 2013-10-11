@@ -1,6 +1,6 @@
 var margin = {
   top: 20,
-  right: 160,
+  right: 220,
   bottom: 30,
   left: 0
 },
@@ -30,7 +30,7 @@ var svg = d3.select("#chart").append("svg")
 
 d3.csv("data.csv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) {
-    return key !== "TeamMember";
+    return key !== "TeamMember" && key !== "order";
   }));
 
   data.forEach(function(d) {
@@ -92,7 +92,7 @@ d3.csv("data.csv", function(error, data) {
     .enter().append("g")
     .attr("class", "legend")
     .attr("transform", function(d) {
-      return "translate(" + (x.rangeBand() - 10) + "," + y((d.y0 + d.y1) / 2) + ")";
+      return "translate(" + (x.rangeBand() + 5) + "," + y((d.y0 + d.y1) / 2) + ")";
     });
 
   legend.append("line")
