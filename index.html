@@ -39,6 +39,12 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
+        <section>
+          <iframe class="stretch" id="dotmap_iframe" src="slides/dot_map/index.html"></iframe>
+          <div class="fragment" id="dot_map_start"></div>
+        </section>
+
 				<section>
 					<img id="logo" class="logo" src="images/logo_light.png"></img>
 					<h3>How Nordstrom utilizes humans as learning machines to blend brick-and-mortar with online commerce</h3>
@@ -54,11 +60,6 @@
           <canvas id="nord_hist" width="960" height="860"></canvas>
           <div class="fragment" id="nordstrom_comic_start"></div>
         </section>
-
-        <section>
-          <iframe class="stretch" id="dotmap_iframe" src="slides/dot_map/index.html"></iframe>
-          <div class="fragment" id="dot_map_start"></div>
-        </section>
         
         <section>
           <h3>The mission of the Nordstrom Data Lab is to deliver data-driven products to inform business decisions and enhance customer experience.</h3>
@@ -67,6 +68,8 @@
           </p>
           <img class="plain" src="images/shoe_profile.png"/>
         </section>
+
+
 
         <section>
           <h3>Nordstrom Data Lab Timeline</h3>
@@ -85,7 +88,7 @@
         <section>
         <p>“There has been a shift in our thinking. A part of our resources are now more human curated...our engineers evolve the algorithm, and humans help us see if a suggested change is really an improvement.”
         </p>
-        <p>--Scott Huffman, Engineering Director in charge or search quality at Google</p>
+        <p>Scott Huffman, Engineering Director in charge or search quality at Google</p>
         </section>
 
         <section>
@@ -98,17 +101,18 @@
               <li>Evaluate</li>
             </ol>
           </p>
-        </section>
+        </section>     
 
         <section>
-          <h3>Mmmm, Tasty Data Insights</h3>
-          <a href="http://www.flickr.com/photos/spilt-milk/1195727702/in/photolist-2PEqbS-2RsFt4-2VLTXp-2W3xhv-2ZwnCm-345Jox-3cZm9f-3p1ANt-3pBeU8-3Y5RAG-3ZdHLP-3ZhV6j-48d1Df-4hwmiW-4iGjFq-4jb4at-4kPdNm-4s6QA6-4treZ6-4tvhRb-4xKpFW-4y1DMb-4ynozb-4z1g1S-4AtKsy-4ECJ2Y-4Fn18C-4FSCkL-4Jbgze-4JbgJ8-4JbgY2-4JfuN7-4JfvfS-4Jfvum-4MLhdS-4Qy82p-4QAfCj-4XtUZt-4Xyck1-4Y1bd1-51M4QK-52cEN5-54Ntxf-54NtAS-55B73m-57SLFt-593jfD-5cM9YF-5cRsNq-5fWQkF-5hsfHS/"><img src="images/doughnut.jpg" /></a>
+          <h3>Three case studies in need of a better title</h3>
+          <p>
+            <ol type = "I">
+              <li>"Our Stylist Suggest": <i>Getting something for nothing</i></li>
+              <li>"Recommendo": <i>Nordstrom's homegrown recs engine and API</i></li>
+              <li>"My Color Palette": <i>Reinvisioning recommendations</i></li>
+            </ol>
+          </p>
         </section>
-
-        <section>
-          <h3>Let's Go To Production!</h3>
-          <a href="http://www.flickr.com/photos/44124348109@N01/5201796697/in/photolist-8VEyVX-czx9af-7Q6ov5-bz1Gaq-e7E28R-bz1Fkh-85n1HJ-85iS8r-85n1ry-85n1GS-85iRNM-85iS38-85n1oY-85n1Fm-85n1EA-85n1pq-e7KGAb-e7KGju-8G3jH2-8G1C4M-8G1zk2-85iS92-8GboLQ-8G55UK-8G5SYz-beHUHg-9KvmJc-9Kyb45-85iS2K-85iRXt-85iRTg-85n1uN-85iRZt-85iRWx-85iRV2-85n1qW-85iRY2-85n1DW-85iRSr-85n1sN-85n1wG-85n1Ky-85n1zm-8vHa9X-8vGXZB-8vGkWg-8vLcoA-8vKZbq-8vGSLv-8vKVcY-8vGPhr"><img src="images/doughnut_assembly.jpg" /></a>
-        </section>        
 
         <!--
         <section>
@@ -125,12 +129,7 @@
         <section>
           <h3><i>Emulate</i> stylist behavior with a simple market-basket analysis</h3>
           <p>Count up co-occurrences of items sold in the stores from transactions facilitated by personal stylists</p>
-        </section>
-
-        <section>
-          <h3><i>Automate</i> with a combination of R, SQL and Ruby</h3> 
-          <p>In v.1, we used Ruby to glue together SQL and R to generate association rules for products sold in stores by personal stylists.</p>
-          <a><img src="images/Rlogo.png" align = "left" width = "25%", height = "25%"/></a>
+          <img src="images/algorithm.png" align = "center" width = "25%", height = "25%"/>
         </section>
 
         <section>
@@ -145,8 +144,37 @@
         </section>
 
         <section>
-          <iframe class="stretch" src="slides/photo_zoom/index.html"></iframe>
+          <h3><i>Automate</i> with Jenkins</h3> 
+          <p>In v.1, we used Ruby to glue together SQL and R to generate association rules for products sold in stores by personal stylists.</p>
+          <img src="images/Rlogo.png" align = "left" width = "25%", height = "25%"/>
         </section>
+
+        <section>
+          <h3><i>Evaluate</i> performance with randomized testing against incumbent strategy</h3>
+          <p>We ran a test for 4 weeks (?) and saw a 20% increase in add-to-bags and blah blah blah.</p>
+        </section>
+
+        <section>
+          <h3>Lessons learned</h3>
+        </section>
+
+        <section>
+          <h3>API!</h3>
+        </section>
+
+        <section>
+          <iframe class="stretch" src="slides/photo_zoom/index.html"></iframe>
+          </section>
+
+          <section>
+          <h3>Mmmm, Tasty Data Insights</h3>
+          <a href="http://www.flickr.com/photos/spilt-milk/1195727702/in/photolist-2PEqbS-2RsFt4-2VLTXp-2W3xhv-2ZwnCm-345Jox-3cZm9f-3p1ANt-3pBeU8-3Y5RAG-3ZdHLP-3ZhV6j-48d1Df-4hwmiW-4iGjFq-4jb4at-4kPdNm-4s6QA6-4treZ6-4tvhRb-4xKpFW-4y1DMb-4ynozb-4z1g1S-4AtKsy-4ECJ2Y-4Fn18C-4FSCkL-4Jbgze-4JbgJ8-4JbgY2-4JfuN7-4JfvfS-4Jfvum-4MLhdS-4Qy82p-4QAfCj-4XtUZt-4Xyck1-4Y1bd1-51M4QK-52cEN5-54Ntxf-54NtAS-55B73m-57SLFt-593jfD-5cM9YF-5cRsNq-5fWQkF-5hsfHS/"><img src="images/doughnut.jpg" /></a>
+        </section>
+
+        <section>
+          <h3>Let's Go To Production!</h3>
+          <a href="http://www.flickr.com/photos/44124348109@N01/5201796697/in/photolist-8VEyVX-czx9af-7Q6ov5-bz1Gaq-e7E28R-bz1Fkh-85n1HJ-85iS8r-85n1ry-85n1GS-85iRNM-85iS38-85n1oY-85n1Fm-85n1EA-85n1pq-e7KGAb-e7KGju-8G3jH2-8G1C4M-8G1zk2-85iS92-8GboLQ-8G55UK-8G5SYz-beHUHg-9KvmJc-9Kyb45-85iS2K-85iRXt-85iRTg-85n1uN-85iRZt-85iRWx-85iRV2-85n1qW-85iRY2-85n1DW-85iRSr-85n1sN-85n1wG-85n1Ky-85n1zm-8vHa9X-8vGXZB-8vGkWg-8vLcoA-8vKZbq-8vGSLv-8vKVcY-8vGPhr"><img src="images/doughnut_assembly.jpg" /></a>
+        </section>   
 
 				<section>
 					<h2>Acknowledgements</h2>
