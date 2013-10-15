@@ -1,0 +1,51 @@
+#vis {
+  position: relative;
+  width: 800px;
+  margin: 0 auto;
+  top: 0;
+}
+
+#previews, #detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding-bottom: 45px;
+}
+
+.preview {
+  position: relative;
+  float: left;
+}
+
+#detail {
+  position: fixed;
+  top: 128px;
+  width: 100%;
+  background-color:rgba(255,255,255,0.5);
+}
+
+#detail_panel {
+  margin: 0px auto;
+  width: 800px;
+  position: relative;
+}
+
+#detail_view {
+  width: 800px;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+  -webkit-transition: opacity 500ms ease-in;
+  -moz-transition: opacity 500ms ease-in;
+  z-index: 0 !important;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+  -webkit-transition: opacity 500ms ease-in;
+  -moz-transition: opacity 500ms ease-in;
+}

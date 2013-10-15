@@ -1,0 +1,276 @@
+
+StackedArea = () ->
+  width = 20
+  height = 60
+  margin = {top: 0, right: 0, bottom: 0, left: 0}
+  user_id = -1
+  vis = null
+  svg = null
+  allData = []
+  data = []
+
+  h = d3.scale.linear()
+
+  weight = (d) -> d.weighted_count
+  maxColors = 20
+  maxWeight = 0.85
+
+  filterData = (rawData) ->
+    if user_id < 0
+      user_id = rawData[0].id
+    data = rawData.filter (d) -> d.id == user_id
+    data = data[0]
+    data
+
+  restrictData = (filteredData) ->
+    sortedData = filteredData.sort((a,b) -> weight(b) - weight(a))
+    restricted = []
+    totalWeight = sortedData.map((d) -> weight(d)).reduce((p,c) -> p + c)
+    curWeight = 0
+
+    for d in sortedData
+      curWeight += weight(d)
+      restricted.push(d)
+      if (curWeight / totalWeight) >= maxWeight
+        break
+
+    h.domain([0, curWeight])
+
+    restricted
+
+  chart = (selection) ->
+    selection.each (rawData) ->
+
+      data = rawData
+
+      pre = d3.select(this).select("#previews")
+        .selectAll(".preview").data(data)
+
+      # create the svg elements
+      pre.enter()
+        .append("div")
+        .attr("class", "preview")
+        .attr("width", width + "px")
+        .attr("height", height + "px")
+
+      svgs = pre.append("svg")
+        .attr("width", width)
+        .attr("height", height)
+
+      previews = svgs.append("g")
+      previews.each(drawChart)
+
+      # svg = d3.select(this).selectAll("svg").data([data])
+      # gEnter = svg.enter().append("svg").append("g")
+      
+      # svg.attr("width", width + margin.left + margin.right )
+        # .attr("height", height + margin.top + margin.bottom )
+
+      # g = svg.select("g")
+        # .attr("transform", "translate(#{margin.left},#{margin.top})")
+
+      # g.append("rect")
+      #   .attr("width", width)
+      #   .attr("height", height)
+      #   .attr("stroke-fill", "none")
+      #   .attr("fill", "none")
+
+      # vis = g.append("g").attr("class", "vis_stacked")
+      # g.append("a")
+        # .attr("xlink:href", "http://localhost:3000/##{user_id}")
+        # .attr("target", "_blank")
+      previews.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("fill-opacity", 0)
+        .on("click", showDetail)
+      
+      # update()
+
+
+  drawChart = (d,i) ->
+  # update = () ->
+    h.range([0, height])
+    # data = filterData(allData)
+    cData = restrictData(d.colors)
+    # vis.selectAll(".stack").data([]).exit().remove()
+    #
+    base = d3.select(this)
+    vis = base.append("g")
+    
+    v = vis.selectAll(".stack")
+      .data(cData)
+
+    v.enter().append("rect")
+      .attr("width", width)
+      .attr("x", 0)
+      .attr("class", "stack")
+
+    totalHeight = 0.0
+    v.attr "y", (d,i) ->
+      mheight = h(weight(d))
+      myY = totalHeight
+      totalHeight += mheight
+      myY
+    .attr "height", (d,i) ->
+      mheight = h(weight(d))
+      mheight
+    .attr("fill", (d) -> d.rgb_string)
+
+    v.exit().remove()
+      
+  # ---
+  # Shows the detail view for a given element
+  # This works by appending a copy of the graph
+  # to the 'detail' svg while switching the
+  # detail section to visible
+  # ---
+  showDetail = (d,i) ->
+    # switch the css on which divs are hidden
+    toggleHidden(true)
+    
+    detailView = d3.select("#detail_view")
+
+    # clear any existing detail view
+    detailView.selectAll('.main').remove()
+
+    # bind the single element to be detailed to the 
+    # detail view's group
+    detailG = detailView.selectAll('g').data([d]).enter()
+
+    # create a new group to display the graph in
+    main = detailG.append("g")
+      .attr("class", "main")
+
+    # draw graph just like in the initial creation
+    # of the small multiples
+    main.each(drawChart)
+
+    # add details specific to the detail view
+    main.each(drawDetails)
+
+    # setup click handler to hide detail view once
+    # graph or detail panel is clicked
+    main.on("click", () -> hideDetail(d,i))
+    d3.select("#detail").on("click", () -> hideDetail(d,i))
+   
+    # Here is the code responsible for the lovely zoom
+    # affect of the detail view
+    
+    # getPosition is a helper function to
+    # return the relative location of the graph
+    # to be viewed in the detail view
+    pos = getPosition(i)
+    # scrollTop returns the number of pixels
+    # hidden on the top of the window because of
+    # the window being scrolled down
+    # http://api.jquery.com/scrollTop/
+    scrollTop = $(window).scrollTop()
+
+    # first we move our (small) detail graph to be positioned over
+    # its preview version
+    main.attr('transform', "translate(#{pos.left},#{pos.top - scrollTop})")
+    # then we use a transition to center the detailed graph and scale it
+    # up to be bigger
+    main.transition()
+      .delay(500)
+      .duration(500)
+      .attr('transform', "translate(#{40},#{0}) scale(#{scaleFactor})")
+
+  # ---
+  # This function shrinks the detail view back from whence it came
+  # ---
+  hideDetail = (d,i) ->
+    # see showDetail for... details
+    pos = getPosition(i)
+    scrollTop = $(window).scrollTop()
+
+    # Use transition to move the detail panel back 
+    # down to its preview's location
+    # The view also shrinks back to its preview size
+    # because d3's transition can tween between the 
+    # scale it had, and the lack of scale here.
+    d3.selectAll('#detail_view .main').transition()
+      .duration(500)
+      .attr('transform', "translate(#{pos.left},#{pos.top - scrollTop})")
+      .each 'end', () ->
+        toggleHidden(false)
+
+  # ---
+  # Toggles hidden css between the previews and detail view divs
+  # if show is true, the detail view is shown
+  # ---
+  toggleHidden = (show) ->
+    d3.select("#previews").classed("hidden", show).classed("visible", !show)
+    d3.select("#detail").classed("hidden", !show).classed("visible", show)
+
+  chart.updateDisplay = (_) ->
+    user_id = _
+    update()
+    chart
+
+  chart.id = (_) ->
+    if !arguments.length
+      return user_id
+    user_id = _
+    chart
+
+  chart.weight = (_) ->
+    if !arguments.length
+      return weight
+    weight = _
+    chart
+
+  chart.height = (_) ->
+    if !arguments.length
+      return height
+    height = _
+    chart
+
+  chart.width = (_) ->
+    if !arguments.length
+      return width
+    width = _
+    chart
+
+  chart.margin = (_) ->
+    if !arguments.length
+      return margin
+    margin = _
+    chart
+
+  return chart
+
+
+
+$ ->
+  stacked_weight = StackedArea()
+  # stacked_weight.id(user_id)
+  # stacked_weight.weight((d) -> d.weighted_count)
+
+  display = (error, data) ->
+   shuffle(data)
+   data = data[0..400]
+   d3.select("#vis")
+     .datum(data)
+     .call(stacked_weight)
+   # data.forEach (d,i) ->
+   #   stacked_weight = StackedArea()
+   #   stacked_weight.id(d.id)
+   #   stacked_weight.weight((e) -> e.weighted_count)
+   #   stacked_weight.width(20)
+   #   stacked_weight.height(60)
+   #   stacked_weight.margin({top: 0, right: 0, bottom: 0, left: 0})
+
+   #   selector = "vis_#{i}"
+   #   d3.select("#vis").append("div")
+   #    .attr("id", selector)
+
+   #   d3.select("#" + selector)
+   #     .datum(data)
+   #     .call(stacked_weight)
+
+
+  queue()
+    .defer(d3.json, "data/user_colors.json")
+    .await(display)

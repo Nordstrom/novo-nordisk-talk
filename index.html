@@ -14,7 +14,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/nordstrom.css" id="theme">
 
 		<!-- For syntax highlighting -->
@@ -62,10 +62,9 @@
         </section>
         
         <section>
-          <h3>The mission of the Nordstrom Data Lab is to deliver data-driven products to inform business decisions and enhance customer experience.</h3>
-          <p>
-            Whether by serving up recommendations to make products easier to find, or creating engaging new ways to interact with the website, it’s ultimately about creating a great shopping experience. 
-          </p>
+          <h3>The Nordstrom Data Lab Mission</h3>
+          <p>Delighting customers through data-driven products.</p>
+          <br/>
           <img class="plain" src="images/shoe_profile.png"/>
         </section>
 
@@ -76,9 +75,15 @@
           <iframe class="stretch" id="timeline_iframe" src="slides/timeline/index.html"></iframe>
           <div class="fragment" id="timeline_start"></div>
         </section>
-        
+
+        <!--TODO: fix sizing when projected-->
         <section>
           <iframe class="stretch" src="slides/team_skills/index.html"></iframe>
+        </section>
+
+        <section>
+          <h3>Our Powers Combined</h3>
+          <img src="images/captain_planet.jpg"/>
         </section>
 
         <section>
@@ -86,72 +91,114 @@
         </section>
 
         <section>
-        <p>“There has been a shift in our thinking. A part of our resources are now more human curated...our engineers evolve the algorithm, and humans help us see if a suggested change is really an improvement.”
-        </p>
-        <p>Scott Huffman, Engineering Director in charge or search quality at Google</p>
+          <blockquote id="human_machine_quote">There has been a shift in our thinking. A part of our resources are now more human curated...<br/><br/>our engineers <span class="highlight">evolve the algorithm</span>, and <span class="highlight">humans help us see</span> if a suggested change is really an improvement.
+        </blockquote>
+        <br/>
+        <p class="attribution">- Scott Huffman<br/>Engineering Director at Google</p>
         </section>
 
         <section>
           <h3>At Nordstrom we make recommendations with EASE</h3>
-          <p>
-            <ol>
-              <li>Emulate</li>
-              <li>Automate</li>
-              <li>Scale</li>
-              <li>Evaluate</li>
-            </ol>
-          </p>
         </section>     
 
         <section>
-          <h3>Three case studies in need of a better title</h3>
+          <h3 class="huge">EASE</h3>
+        </section>
+
+        <section data-transition-speed="fast" data-transition="linear" data-background="images/emulate.gif" data-background-size="200px" data-background-repeat="repeat">
+          <h3 class="huge boxed">Emulate</h3>
+        </section>
+
+        <section data-transition-speed="fast" data-transition="linear">
+          <h3 class="huge">Automate</h3>
+        </section>
+
+        <section data-transition-speed="fast" data-transition="linear">
+          <h3 class="huge">Scale</h3>
+        </section>
+
+        <section data-transition-speed="fast" data-transition="linear">
+          <h3 class="huge">Evaluate</h3>
+        </section>
+
+        <section>
+          <h3>Three Applications of EASE</h3>
           <p>
-            <ol type = "I">
-              <li>"Our Stylist Suggest": <i>Getting something for nothing</i></li>
-              <li>"Recommendo": <i>Nordstrom's homegrown recs engine and API</i></li>
-              <li>"My Color Palette": <i>Reinvisioning recommendations</i></li>
+            <ol>
+              <li>Our Stylist Suggest</li>
+              <li>Recommendo</li>
+              <li>My Color Palette</li>
             </ol>
           </p>
         </section>
 
-        <!--
-        <section>
-          <h3>Toolbelt</h3>
-          <img src="images/tool_logos.png" />
-        </section>        
-        --!>
-
         <section>
           <h3>Stylists at Nordstrom</h3>
+          <video data-autoplay src="video/stylist.mov"></video>
           <!--TODO: add captions? increase volume?-->
         </section>
 
+        <section data-transition="fade">
+          <h3>How to Emulate a stylist?</h3>
+          <br/>
+          <p>Stylist-based Market Basket Analysis</p>
+          <!-- <p>Count up co-occurrences of items sold in the stores from transactions facilitated by personal stylists</p> -->
+          <!-- <img class="plain" src="images/algorithm.png" align = "center" width = "25%", height = "25%"/> -->
+          <img class="plain" src="images/stylists.001.png" />
+        </section>
+
+        <section data-transition="fade">
+          <h3>How to Emulate a stylist?</h3>
+          <br/>
+          <p>Stylist-based Market Basket Analysis</p>
+          <!-- <p>Count up co-occurrences of items sold in the stores from transactions facilitated by personal stylists</p> -->
+          <!-- <img class="plain" src="images/algorithm.png" align = "center" width = "25%", height = "25%"/> -->
+          <img class="plain" src="images/stylists.002.png" />
+        </section>
+
+        <section data-transition="fade">
+          <h3>How to Emulate a stylist?</h3>
+          <br/>
+          <p>Stylist-based Market Basket Analysis</p>
+          <!-- <p>Count up co-occurrences of items sold in the stores from transactions facilitated by personal stylists</p> -->
+          <!-- <img class="plain" src="images/algorithm.png" align = "center" width = "25%", height = "25%"/> -->
+          <img class="plain" src="images/stylists.003.png" />
+        </section>
         <section>
-          <h3><i>Emulate</i> stylist behavior with a simple market-basket analysis</h3>
-          <p>Count up co-occurrences of items sold in the stores from transactions facilitated by personal stylists</p>
-          <img class="plain" src="images/algorithm.png" align = "center" width = "25%", height = "25%"/>
+          <h3>Evaluate</h3>
+          <br/>
+          <!-- <p>Build interest with a light-weight front-end</p> -->
+          <p>Test internally with cheap prototype</p>
+          <br/>
+          <p>Compare to incumbent</p>
+        </section>
+        <section><img class="plain" src="images/oss_screenshot_1.png" align = "center" width = "100%", height = "100%" border = "0"/></section>
+        <section><img class="plain" src="images/oss_screenshot_2.png" align = "center" width = "100%", height = "100%" border = "0"/></section>
+        <section><img class="plain" src="images/oss_screenshot_3.png" align = "center" width = "100%", height = "100%" border = "0"/></section>
+
+
+        <section>
+          <h3>Automate</h3>
+          <br/>
+          <img class="plain" src="images/automate_tools.png" />
         </section>
 
         <section>
-          <section>
-            <h3><i>Evaluate</i> and build interest with a light-weight front-end</h3>
-          </section>
-          
-          <section><img class="plain" src="images/oss_screenshot_1.png" align = "center" width = "100%", height = "100%" border = "0"/></section>
-          <section><img class="plain" src="images/oss_screenshot_2.png" align = "center" width = "100%", height = "100%" border = "0"/></section>
-          <section><img class="plain" src="images/oss_screenshot_3.png" align = "center" width = "100%", height = "100%" border = "0"/></section>
-
+          <h3>Evaluate</h3>
+          <br/>
+          <p>A/B Test against incumbent</p>
+          <p>TODO: ADD CHART SHOWING AWESOMENESS</p>
+          <!-- <p>We ran a test for 4 weeks (?) and saw a 20% increase in add-to-bags and blah blah blah.</p> -->
         </section>
 
         <section>
-          <h3><i>Automate</i> with Jenkins</h3> 
-          <p>In v.1, we used Ruby to glue together SQL and R to generate association rules for products sold in stores by personal stylists.</p>
-          <img class = "plain" src="images/Rlogo.png" align = "left" width = "25%", height = "25%"/>
+          <h3>Scale</h3>
+          <br/>
+          <p>Recommendo</p>
         </section>
 
         <section>
-          <h3><i>Evaluate</i> performance with randomized testing against incumbent strategy</h3>
-          <p>We ran a test for 4 weeks (?) and saw a 20% increase in add-to-bags and blah blah blah.</p>
+          <h3>TODO: ADD SLIDES ABOUT SCALING AND RECOMMENDO AND STUFF</h3>
         </section>
 
         <section>
@@ -159,12 +206,12 @@
         </section>
 
         <section>
-          <h3>API!</h3>
+          <h3>Lessons learned</h3>
         </section>
 
         <section>
           <iframe class="stretch" src="slides/photo_zoom/index.html"></iframe>
-          </section>
+        </section>
 
           <section>
           <h3>Mmmm, Tasty Data Insights</h3>
