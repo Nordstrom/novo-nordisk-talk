@@ -20,7 +20,7 @@
 
 #detail {
   position: fixed;
-  top: 128px;
+  top: 0;
   width: 100%;
   background-color:rgba(255,255,255,0.5);
 }
@@ -48,4 +48,14 @@
   transition: opacity 500ms ease-in;
   -webkit-transition: opacity 500ms ease-in;
   -moz-transition: opacity 500ms ease-in;
+}
+
+.background {
+  fill: #e3eded;
+}
+
+.mouse_preview {
+  pointer-events: all;
+  cursor: pointer;
+  fill: none;
 }

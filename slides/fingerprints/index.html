@@ -14,8 +14,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <!-- CSS concatenated and minified via ant build script-->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/tipsy.css">
   <link rel="stylesheet" href="css/style.css">
   <style>
     #vis {
@@ -35,21 +33,20 @@
 </head>
 
 <body>
-
-  <div id="container" class="container">
-    <div id="main" role="main">
-      <div id="vis">
-        <div id="previews"></div>
-        <div id="detail" class="hidden">
-          <div id="detail_panel">
-            <svg width="800" height="800">
+<div id="container" class="container">
+  <div id="main" role="main">
+    <div id="vis">
+      <div id="previews"></div>
+      <div id="detail" class="hidden">
+        <div id="detail_panel">
+          <svg width="800" height="800">
             <g id="detail_view"></g>
-            </svg>
-          </div>
+          </svg>
         </div>
       </div>
     </div>
-  </div> <!--! end of #container -->
+  </div>
+</div> <!--! end of #container -->
 
   <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.10.2.min.js"><\/script>')</script>

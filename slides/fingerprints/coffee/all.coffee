@@ -8,6 +8,7 @@ StackedArea = () ->
   svg = null
   allData = []
   data = []
+  scaleFactor = 4
 
   h = d3.scale.linear()
 
@@ -58,35 +59,15 @@ StackedArea = () ->
         .attr("height", height)
 
       previews = svgs.append("g")
+
       previews.each(drawChart)
 
-      # svg = d3.select(this).selectAll("svg").data([data])
-      # gEnter = svg.enter().append("svg").append("g")
-      
-      # svg.attr("width", width + margin.left + margin.right )
-        # .attr("height", height + margin.top + margin.bottom )
-
-      # g = svg.select("g")
-        # .attr("transform", "translate(#{margin.left},#{margin.top})")
-
-      # g.append("rect")
-      #   .attr("width", width)
-      #   .attr("height", height)
-      #   .attr("stroke-fill", "none")
-      #   .attr("fill", "none")
-
-      # vis = g.append("g").attr("class", "vis_stacked")
-      # g.append("a")
-        # .attr("xlink:href", "http://localhost:3000/##{user_id}")
-        # .attr("target", "_blank")
       previews.append("rect")
         .attr("width", width)
         .attr("height", height)
         .attr("fill-opacity", 0)
         .on("click", showDetail)
       
-      # update()
-
 
   drawChart = (d,i) ->
   # update = () ->
@@ -146,8 +127,6 @@ StackedArea = () ->
     # of the small multiples
     main.each(drawChart)
 
-    # add details specific to the detail view
-    main.each(drawDetails)
 
     # setup click handler to hide detail view once
     # graph or detail panel is clicked
@@ -203,6 +182,32 @@ StackedArea = () ->
   toggleHidden = (show) ->
     d3.select("#previews").classed("hidden", show).classed("visible", !show)
     d3.select("#detail").classed("hidden", !show).classed("visible", show)
+
+
+  # ---
+  # Updates domains for scales used in bar charts
+  # expects 'data' to be accessible and set to our
+  # data.
+  # ---
+  setScales = () ->
+    yMax = d3.max(data, (d) -> d3.max(d.values, (e) -> e.value))
+    # this scale is expanded past its max to provide some white space
+    # on the top of the bars
+    yScale.domain([0,yMax + 500000])
+
+    names = data[0].values.map (d) -> d.name
+    xScale.domain(names)
+    colorScale.domain(names)
+
+  # ---
+  # Helper function to return the position
+  # of a preview graph at index i
+  # ---
+  getPosition = (i) ->
+    el = $('.preview')[i]
+    # http://api.jquery.com/position/
+    pos = $(el).position()
+    pos
 
   chart.updateDisplay = (_) ->
     user_id = _
