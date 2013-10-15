@@ -154,7 +154,7 @@ StackedArea = () ->
     main.transition()
       .delay(500)
       .duration(500)
-      .attr('transform', "translate(#{40},#{0}) scale(#{scaleFactor})")
+      .attr('transform', "translate(#{300},#{100}) scale(#{scaleFactor})")
 
   # ---
   # This function shrinks the detail view back from whence it came
