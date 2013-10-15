@@ -5,10 +5,12 @@ StackedArea = () ->
   margin = {top: 0, right: 0, bottom: 0, left: 0}
   user_id = -1
   vis = null
-  svg = null
+  svgs = null
+  pre = null
+  previews = null
   allData = []
   data = []
-  scaleFactor = 4
+  scaleFactor = 8
 
   h = d3.scale.linear()
 
@@ -65,7 +67,9 @@ StackedArea = () ->
       previews.append("rect")
         .attr("width", width)
         .attr("height", height)
-        .attr("fill-opacity", 0)
+        .attr("fill-opacity", 1)
+        .attr("class", "filler")
+        .attr("fill", "white")
         .on("click", showDetail)
       
 
@@ -151,10 +155,18 @@ StackedArea = () ->
     main.attr('transform', "translate(#{pos.left},#{pos.top - scrollTop})")
     # then we use a transition to center the detailed graph and scale it
     # up to be bigger
-    main.transition()
-      .delay(500)
-      .duration(500)
+    main
+      .attr("opacity", 1e-6)
       .attr('transform', "translate(#{300},#{100}) scale(#{scaleFactor})")
+
+    main.transition()
+      .duration(200)
+      .attr("opacity", 1)
+      .each("end", () -> hideDetail(d,i))
+
+  showSmall = (i) ->
+    previews.select(".filler").filter((d,e) -> e == i).remove()
+      # .attr("fill-opacity", (d,e) -> if e == i then 0 else 1)
 
   # ---
   # This function shrinks the detail view back from whence it came
@@ -170,10 +182,21 @@ StackedArea = () ->
     # because d3's transition can tween between the 
     # scale it had, and the lack of scale here.
     d3.selectAll('#detail_view .main').transition()
-      .duration(500)
+      .delay(500)
+      .duration(400)
       .attr('transform', "translate(#{pos.left},#{pos.top - scrollTop})")
       .each 'end', () ->
         toggleHidden(false)
+        showSmall(i)
+
+
+  chart.add = () ->
+    current = getRandomInt(0, data.length - 1)
+    previews.each((d,i) -> if current == i then showDetail(d,i))
+    # current += 1
+
+
+
 
   # ---
   # Toggles hidden css between the previews and detail view divs
@@ -250,32 +273,28 @@ StackedArea = () ->
 
 $ ->
   stacked_weight = StackedArea()
-  # stacked_weight.id(user_id)
-  # stacked_weight.weight((d) -> d.weighted_count)
+  intervalId = 1
 
   display = (error, data) ->
    shuffle(data)
-   data = data[0..400]
+   data = data[0..250]
    d3.select("#vis")
      .datum(data)
      .call(stacked_weight)
-   # data.forEach (d,i) ->
-   #   stacked_weight = StackedArea()
-   #   stacked_weight.id(d.id)
-   #   stacked_weight.weight((e) -> e.weighted_count)
-   #   stacked_weight.width(20)
-   #   stacked_weight.height(60)
-   #   stacked_weight.margin({top: 0, right: 0, bottom: 0, left: 0})
 
-   #   selector = "vis_#{i}"
-   #   d3.select("#vis").append("div")
-   #    .attr("id", selector)
+  animate = () ->
+    stacked_weight.add()
 
-   #   d3.select("#" + selector)
-   #     .datum(data)
-   #     .call(stacked_weight)
+  startPlot = () ->
+    console.log('starting')
+    intervalId = window.setInterval(animate, 1200)
 
+  stopPlot = () ->
+    clearInterval(intervalId)
 
   queue()
     .defer(d3.json, "data/user_colors.json")
     .await(display)
+
+  window.addEventListener('message', startPlot, false)
+
