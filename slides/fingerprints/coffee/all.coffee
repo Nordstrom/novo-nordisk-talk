@@ -286,7 +286,7 @@ $ ->
     stacked_weight.add()
 
   startPlot = () ->
-    console.log('starting')
+    # console.log('starting')
     intervalId = window.setInterval(animate, 1200)
 
   stopPlot = () ->
