@@ -21,21 +21,23 @@ Reveal.addEventListener( 'ready', function( event ) {
   var x = 0;
   var y = 0;
   var ease = d3.ease("cubic-in-out");
-  var timeInc = 1 / 120.0;
+  var timeInc = 1 / 240.0;
   var refreshIntervalId;
   var time = 0;
 
   function draw() {
-    time += timeInc;
-    var pos = ease(time) * -1090;
-    context.drawImage(imageObj, pos, 0);
-    if (pos <= -1090) {
-      clearInterval(refreshIntervalId);
-    }
+    d3.timer(function() {
+      time += timeInc;
+      var pos = ease(time) * -1090;
+      context.drawImage(imageObj, pos, 0);
+      if (pos <= -1090) {
+        return true;
+      }
+    });
   }
 
   function startComic() {
-    refreshIntervalId = setInterval(draw, 30);
+    draw();
   }
   // DONE - Nordstrom Comic Image 
 
