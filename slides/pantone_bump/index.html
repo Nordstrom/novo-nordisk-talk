@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/reveal.min.css">
+  <link rel="stylesheet" href="/css/theme/nordstrom.css" id="theme">
+  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/css/rickshaw.css" />
+  <style>
+  #chart-container {
+    margin-top: 20px;
+    width: 100%;
+    height: 500px;
+    table-layout:fixed;
+  }
+
+  #chart-container h4 { 
+    margin-top: 12px; 
+    text-align: center; 
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #chart-container h5 {
+    text-align: center;
+    margin-top: 5px; 
+    font-size: 0.6em;
+  }
+
+  #chart-container td {
+    width: auto;
+    overflow: hidden;
+  }
+
+  .x_tick {
+    font-size: 14px !important;
+    border-left: none !important;
+  }
+  </style>
+</head>
+<body>
+  <script src="/js/d3.v3.min.js"></script>
+  <script src="/js/lodash.min.js"></script>
+  <script src="/js/rickshaw.min.js"></script>
+  <script src="/js/jquery-1.10.2.js"></script>
+
+  <div class="reveal">
+    <h3>The Pantone Bump</h3>
+    <table id="chart-container">
+      <tr>
+        <td id="chart_1"><div class="graph"></div><h4 /><h5 /></td>
+        <td id="chart_2"><div class="graph"></div><h4 /><h5 /></td>
+        <td id="chart_3"><div class="graph"></div><h4 /><h5 /></td>
+        <td id="chart_4"><div class="graph"></div><h4 /><h5 /></td>
+        <td id="chart_5"><div class="graph"></div><h4 /><h5 /></td>
+      </tr>
+    </div>
+
+    <script>
+    var graphs = [
+      {
+        year: 2009,
+        name: "Mimosa",
+        color: "rgb(247,181,13)",
+        data: [
+          { x: new Date(2008, 0, 0, 0).getTime() / 1000, y: 0.00011286325037132 },
+          { x: new Date(2009, 0, 0, 0).getTime() / 1000, y: 0.000270317119989543 }
+        ]
+      },
+      {
+        year: 2010,
+        name: "Turquoise",
+        color: "rgb(68,184,171)",
+        data: [
+          { x: new Date(2009, 0, 0, 0).getTime() / 1000, y: 0.00316197941939711 },
+          { x: new Date(2010, 0, 0, 0).getTime() / 1000, y: 0.00534907530877146 }
+        ]
+      },
+      {
+        year: 2011,
+        name: "Honeysuckle",
+        color: "rgb(203,102,134)",
+        data: [
+          { x: new Date(2010, 0, 0, 0).getTime() / 1000, y: 0.0033565567425298},
+          { x: new Date(2011, 0, 0, 0).getTime() / 1000, y: 0.00382031799019715 }
+        ]
+      },
+      {
+        year: 2012,
+        name: "Tangerine Tango",
+        color: "rgb(227,73,49)",
+        data: [
+          { x: new Date(2011, 0, 0, 0).getTime() / 1000, y: 0.0050231323676045 },
+          { x: new Date(2012, 0, 0, 0).getTime() / 1000, y: 0.0120157108033439 }
+        ]
+      },
+      {
+        year: 2013,
+        name: "Emerald",
+        color: "rgb(0,153,117)",
+        data: [
+          { x: new Date(2012, 0, 0, 0).getTime() / 1000, y: 0.00220477692806103 },
+          { x: new Date(2013, 0, 0, 0).getTime() / 1000, y: 0.00196747343644225 }
+        ]
+      }
+    ];
+
+    _.each(graphs, function(g, i) {
+      var container = $("#chart_" + (i+1));
+
+      var graph = new Rickshaw.Graph({
+        height: 500,
+        element: container.find(".graph")[0],
+        renderer: 'bar',
+        series: [g]
+      });
+
+      // new Rickshaw.Graph.Axis.Time({
+      //   graph: graph
+      // });
+
+      container.find("h4").text(g.year);
+      container.find("h5").html(g.name);
+      
+      graph.renderer.unstack = true;
+      graph.render();
+    });
+
+    </script>
+  </div>
+</body>
+</html>
