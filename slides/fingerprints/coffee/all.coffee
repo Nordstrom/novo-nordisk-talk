@@ -288,6 +288,7 @@ $ ->
   handleMessages = (message) ->
     command = message.data
     if command == 'start'
+      stacked_weight.add()
       intervalId = window.setInterval(animate, 1200)
     if command == 'stop'
       console.log('stop')
