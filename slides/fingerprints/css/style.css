@@ -44,6 +44,10 @@ h2 {
   padding-bottom: 45px;
 }
 
+#previews {
+  z-index: 0 !important;
+}
+
 .preview {
   position: relative;
   float: left;

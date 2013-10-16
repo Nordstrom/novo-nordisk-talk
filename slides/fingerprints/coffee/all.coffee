@@ -112,7 +112,7 @@ StackedArea = () ->
   # ---
   showDetail = (d,i) ->
     # switch the css on which divs are hidden
-    toggleHidden(true)
+    # toggleHidden(true)
     
     detailView = d3.select("#detail_view")
 
@@ -186,7 +186,7 @@ StackedArea = () ->
       .duration(400)
       .attr('transform', "translate(#{pos.left},#{pos.top - scrollTop})")
       .each 'end', () ->
-        toggleHidden(false)
+        # toggleHidden(false)
         showSmall(i)
 
 
@@ -194,9 +194,6 @@ StackedArea = () ->
     current = getRandomInt(0, data.length - 1)
     previews.each((d,i) -> if current == i then showDetail(d,i))
     # current += 1
-
-
-
 
   # ---
   # Toggles hidden css between the previews and detail view divs
@@ -285,16 +282,21 @@ $ ->
   animate = () ->
     stacked_weight.add()
 
-  startPlot = () ->
-    # console.log('starting')
-    intervalId = window.setInterval(animate, 1200)
-
   stopPlot = () ->
     clearInterval(intervalId)
+
+  handleMessages = (message) ->
+    command = message.data
+    if command == 'start'
+      intervalId = window.setInterval(animate, 1200)
+    if command == 'stop'
+      console.log('stop')
+      stopPlot()
+
 
   queue()
     .defer(d3.json, "data/user_colors.json")
     .await(display)
 
-  window.addEventListener('message', startPlot, false)
+  window.addEventListener('message', handleMessages, false)
 

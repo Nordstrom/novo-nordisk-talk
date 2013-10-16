@@ -164,6 +164,8 @@ Reveal.addEventListener( 'ready', function( event ) {
     previousState = $(event.previousSlide).attr("data-state");
     if (previousState == 'start_scale') {
       removeElement('filler_canvas');
+    } else if(previousState == 'start_fingerprints') {
+      sendIframe('fingerprints_iframe', 'stop');
     }
   });
 
