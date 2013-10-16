@@ -73,4 +73,8 @@ Reveal.addEventListener( 'ready', function( event ) {
     }
   }, false );
 
+  Reveal.addEventListener( 'start_fingerprints', function() {
+    sendIframe('fingerprints_iframe', 'start');
+  }, false );
+
 });
