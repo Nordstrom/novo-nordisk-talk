@@ -4,8 +4,8 @@ var margin = {
   bottom: 30,
   left: 0
 },
-  width = 400 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  width = document.body.offsetWidth - margin.left - margin.right,
+  height = document.body.offsetHeight - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
   .rangeRoundBands([0, width], .1);

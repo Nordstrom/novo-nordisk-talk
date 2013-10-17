@@ -46,7 +46,8 @@ d3.tsv("data.csv", function(error, data) {
  		series.push({
  			color: hexColor,
  			data: seriesData,
- 			name: colorRows[0].name
+ 			name: colorRows[0].name,
+ 			strokeWidth: 4
  		});
   });
 

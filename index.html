@@ -80,6 +80,7 @@
 
         <!--TODO: fix sizing when projected-->
         <section>
+          <h3>Multidisciplinary Team</h3>
           <iframe class="stretch" src="slides/team_skills/index.html"></iframe>
         </section>
 
@@ -244,16 +245,37 @@
         </section>
 
         <section>
+          <h3>Pixels as Data</h3>
           <iframe class="stretch" src="slides/photo_zoom/index.html"></iframe>
         </section>
 
         <section>
-          <h3>Color as Data</h3>
-          <div class="fragment">
-            <img class="plain" src="images/color_data.png" />
-          </div>
+          <h3>Photo Studio Expertise</h3>
+          <img class="plain" src="images/swatch_extract.png" />
         </section>
 
+        <section>
+          <h3>Color Scoring</h3>
+          <ol>
+            <li>Load pattern swatch for every garment photo</li>
+            <li>Python Imaging Library (PIL) to extract RGB of each pixel</li>
+            <li>Map pixel RGB to known color space (i.e. X11)</li>
+            <li>Throw away colors that don't meet minimum threshold</li>
+            <li>Augment product meta-data with color score data</li>
+          </ol>
+        </section>        
+
+        <section>
+          <h3>Color Scoring </h3>
+          <img class="plain" src="images/color_scoring_1.png" />
+        </section>
+        
+        <section>
+          <h3>Color Patterns</h3>
+          <img class="plain" src="images/color_scoring_2.png" />
+        </section>
+
+        
         <section data-background="#C02942">
           <h3 class="huge boxed">Macro Color</h3>
         </section>
@@ -268,7 +290,8 @@
         </section>
 
         <section>
-          <iframe class="stretch" src="slides/pantone_bump/index.html"></iframe>
+          <h3>Pantone Bump</h3>
+          <img class="plain" src="images/pantone_bump.png" />
         </section>
 
         <section>

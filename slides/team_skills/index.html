@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="/css/custom.css">
 
   <style>
+  #chart {
+    width: 100%;
+  }
+
+  body { margin: 0; padding: 0;}
+
   .axis path,
   .axis line {
     fill: none;
@@ -15,7 +21,7 @@
   }
 
   .axis {
-    font-size: 35px;
+    font-size: 1.2em;
   }
 
   .bar {
@@ -35,17 +41,14 @@
     font-size: 1.4em;
   }
 
-  g.x.axis text {
+  /*g.x.axis text {
     font-size: 1.2em;
-  }
+  }*/
   </style>
 </head>
 <body>
   <script src="/js/d3.v3.min.js"></script>
-  <div class="reveal">
-    <h3>Multidisciplinary Team</h3>
-    <div id="chart" />
-    <script src="team_skills.js"></script>
-  </div>
+   <div id="chart" />
+  <script src="team_skills.js"></script>
 </body>
 </html>
