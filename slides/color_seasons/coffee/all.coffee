@@ -419,6 +419,7 @@ $ ->
     .await(display)
 
   startPlot = (e) ->
+    console.log('start')
     action = e.data
     if action == 'start'
       plot.start()

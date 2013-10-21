@@ -137,6 +137,8 @@ Reveal.addEventListener( 'ready', function( event ) {
     } else if (fragmentId == 'timeline_start') {
       // start dot map dots
       sendIframe('timeline_iframe', 'start');
+    } else if (fragmentId == 'color_season_start') {
+      sendIframe('color_season_iframe', 'start');
     }
   }, false );
 
