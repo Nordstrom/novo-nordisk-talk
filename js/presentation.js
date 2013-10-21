@@ -139,6 +139,12 @@ Reveal.addEventListener( 'ready', function( event ) {
       sendIframe('timeline_iframe', 'start');
     } else if (fragmentId == 'color_season_start') {
       sendIframe('color_season_iframe', 'start');
+    } else if (fragmentId == 'color_trends_start') {
+      sendIframe('color_trends_iframe', 'start');
+    } else if (fragmentId == 'color_trends_update') {
+      sendIframe('color_trends_iframe', 'update');
+    } else if (fragmentId == 'color_trends_update_again') {
+      sendIframe('color_trends_iframe', 'update_again');
     }
   }, false );
 
