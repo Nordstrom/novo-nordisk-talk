@@ -246,15 +246,21 @@
         </section>
 
         <section>
-          <h3>Color Scoring</h3>
+          <h3>Color Scoring Photos</h3>
           <ol>
             <li>Load pattern swatch for every garment photo</li>
             <li>Python Imaging Library (PIL) to extract RGB of each pixel</li>
-            <li>Map pixel RGB to known color space (i.e. X11)</li>
+            <li>Convert pixel from RGB to LAB and map to nearest standard color (i.e. X11 color space)</li>
             <li>Throw away colors that don't meet minimum threshold</li>
+            <li>Calculate % of pixels each remaining color comprises</li>
             <li>Augment product meta-data with color score data</li>
           </ol>
         </section>        
+
+        <section>
+          <h3>X11 Color Space</h3>
+          <img class="plain" src="images/x11_colors.png" />
+        </section>
 
         <section>
           <h3>Color Scoring </h3>
@@ -280,10 +286,10 @@
           <h3 class="huge boxed">Macro Color</h3>
         </section>
 
-        <section>
+       <!--  <section>
           <h3>Micro Color</h3>
           <img class="plain" src="images/micro.png" />
-        </section>
+        </section> -->
 
         <section data-background="#C02942">
           <h3 class="huge boxed">Macro Color</h3>
@@ -340,6 +346,18 @@
           <a><img class="plain" src="images/Lab_Logo.png" align = "center" width = "30%", height = "30%"/></a>
           <a><img class="plain" src="images/DataLab-04.png" align = "center" width = "40%", height = "40%"/></a>          
 				</section>
+
+        <section>
+          <h3>Attributions</h3>
+          <ul>
+            <li><a href="http://thenounproject.com/noun/database/#icon-No9658" target="_blank">Database</a> designed by <a href="http://thenounproject.com/monstercritic" target="_blank">Sergey Shmidt</a> from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/engine/#icon-No17617" target="_blank">Engine</a> designed by <a href="http://thenounproject.com/nebson" target="_blank">Ben Johnson</a> from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/cloud-upload/#icon-No2633" target="_blank">Cloud Upload</a> designed by <a href="http://thenounproject.com/adamwhitcroft" target="_blank">Adam Whitcroft</a> from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/cloud/#icon-No6853" target="_blank">Cloud</a> designed by <a href="http://thenounproject.com/pjsmits" target="_blank">Pieter J. Smits</a> from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/iphone/#icon-No414" target="_blank">iPhone</a>  from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/laptop/#icon-No114" target="_blank">Laptop</a>  from The Noun Project</li>
+          </ul>
+        </section>
 				
 			</div>
 		</div>
