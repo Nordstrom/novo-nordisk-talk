@@ -1,18 +1,26 @@
 
 root = exports ? this
 
-valid_cities = {'seaptl':1, 'fla':1, 'laoc':1, 'sfbay':1,'chi':1,'dc':0, 'all':0}
+showAll = true
+valid_cities = {'Seattle':1, 'Miami':1, 'Los Angeles':0, 'San Francisco':0,'Chicago':0,'Washington D.C.':0, 'All':0}
 # showColors = {'Red':1, 'Orange': 1, 'Yellow':1, 'Green':0, 'Blue':0, 'Violet':0, 'Brown':0, 'Black':0}
 showColors = {'Red':1, 'Orange': 1, 'Yellow':1, 'Green':0, 'Blue':0, 'Violet':0, 'Brown':0, 'Black':0}
-startDate = new Date(2012, 3)
+startDate = new Date(2012, 2)
 endDate = new Date(2013, 3)
+
+parseTime = d3.time.format("%Y-%m-%d").parse
 
 limitData = (rawData) ->
   rawData = rawData.filter (d) -> valid_cities[d.city] == 1
+  rawData.forEach (city,i) ->
+    city.colors.forEach (color) ->
+      color.data = color.data.filter (data) ->
+        parseTime(data.date) >= startDate and parseTime(data.date) < endDate
+
   rawData
 
 DiffPlot = () ->
-  width = 1100
+  width = 900
   height = 400
   color = "Red"
   points = null
@@ -180,11 +188,11 @@ DiffPlot = () ->
   return chart
 
 Plot = () ->
-  width = 1100
-  height = 300
+  width = 900
+  height = 250
   points = null
   svg = null
-  margin = {top: 20, right: 20, bottom: 40, left: 20}
+  margin = {top: 20, right: 0, bottom: 20, left: 0}
   duration = 1000
 
   layout = "stream"
@@ -198,13 +206,14 @@ Plot = () ->
   yValue = (d) -> parseFloat(d.percent)
 
  
-  seasons = [{'name':'Spring', 'date':new Date(2012, 4)}, {'name':'Summer', 'date':new Date(2012, 7)}, {'name':'Fall', 'date':new Date(2012, 10)}, {'name':'Winter', 'date':new Date(2013,1)}]
-  # seasonScale = d3.scale.ordinal().domain(seasons).rangePoints([0,width])
+  seasons = [{'name':'Spring', 'date':new Date(2012, 3), 'color':'#2ca02c'}, {'name':'Summer', 'date':new Date(2012, 6), 'color':'#d62728'}, {'name':'Fall', 'date':new Date(2012, 9), 'color':'#ff7f0e'}, {'name':'Winter', 'date':new Date(2012,12), 'color':'#7f7f7f'}]
+  seasonScale = d3.scale.ordinal().domain(seasons.map((d) -> d.name)).rangeBands([0,width])
 
   xAxis = d3.svg.axis()
     .scale(xScale)
     .tickSize(-height)
-    .tickFormat(d3.time.format('%b'))
+    # .tickFormat(d3.time.format('%b'))
+    .tickFormat(d3.time.format(''))
 
   parseTime = d3.time.format("%Y-%m-%d").parse
 
@@ -229,12 +238,13 @@ Plot = () ->
     .order("reverse")
 
   applyFilter = () ->
-    filteredData.forEach (d) ->
-      d.colors = d.colors.filter (c) ->
-        match = ntc.name(c.color)
-        hsl_color = d3.hsl(c.color)
-        shade_name = match[3]
-        showColors[shade_name] == 1
+    if !showAll
+      filteredData.forEach (d) ->
+        d.colors = d.colors.filter (c) ->
+          match = ntc.name(c.color)
+          hsl_color = d3.hsl(c.color)
+          shade_name = match[3]
+          showColors[shade_name] == 1
 
   calculatePercentage = () ->
     sums = d3.map()
@@ -317,21 +327,32 @@ Plot = () ->
         .attr("transform", "translate(0," + (height) +  ")")
         .call(xAxis)
 
-      seasonG = g.append("g")
+      seasonG =  d3.select(this).select("#Miami").append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + height + ")")
+
+      seasonG.selectAll(".season_rect")
+        .data(seasons).enter()
+        .append("rect")
+        .attr("x", (d) -> seasonScale(d.name))
+        .attr("y", 0)
+        .attr("width", seasonScale.rangeBand())
+        .attr("height", 40)
+        .attr("fill", (d) -> d3.hsl(d.color).brighter())
+        .attr("stroke", "white")
 
       seasonG.selectAll(".season")
         .data(seasons).enter()
         .append("text")
-        .attr("x", (d) -> xScale(d.date))
+        .attr("class", "season")
+        .attr("x", (d) -> xScale(d.date) - xScale(startDate))
+        .attr("x", (d) -> seasonScale(d.name) + (seasonScale.rangeBand() / 2))
         .attr("y", 0)
-        .attr("dy", 24)
+        .attr("dy", 28)
         .attr("text-anchor", 'middle')
+        .attr("fill", "white")
         .text((d) -> d.name)
       
-      update()
-
   update = () ->
     applyFilter()
     calculatePercentage()
@@ -499,6 +520,17 @@ Plot = () ->
       .style("stroke-opacity", 1)
       .attr("d", (d) -> line(d.data))
 
+  chart.filter = () ->
+    showAll = false
+    update()
+
+  chart.filter_again = () ->
+    showColors = {'Red':0, 'Orange': 1, 'Yellow':0, 'Green':0, 'Blue':0, 'Violet':0, 'Brown':0, 'Black':0}
+    showAll = false
+    update()
+
+  chart.start = () ->
+    update()
 
   chart.toggle = (name) ->
     layout = name
@@ -562,3 +594,13 @@ $ ->
     .defer(d3.json, "data/swimsuits_city_color_data_with_disp.json")
     .await(display)
 
+  startPlot = (e) ->
+    action = e.data
+    if action == 'start'
+      plot.start()
+    else if action == 'update'
+      plot.filter()
+    else
+      plot.filter_again()
+
+  window.addEventListener('message', startPlot, false)
