@@ -336,8 +336,11 @@ Seadragon.tinydziEmbed.onFirstInteraction = function (id, viewer) {
 
 })();
 
-// var dziPath = "http:\/\/cache.zoom.it\/content\/a2JY.dzi";
-var dziPath = "dzc_output.xml";
+var dziPath;
+if (location.hostname !== "localhost")
+	dziPath = "http:\/\/cache.zoom.it\/content\/a2JY.dzi";
+else
+	dziPath = "dzc_output.xml";
 
 Seadragon.tinydziEmbed("auto", "500px", "a2JY", {"AttributionLink":null,"AttributionText":"","ErrorDetails":"","Id":"a2JY","Progress":1,"SiteDown":0,"Source":"https:\/\/dl.dropboxusercontent.com\/s\/bv2c5tl91jy68yt\/collage5.jpg?token_hash=AAF3DbsPUa79pfgy7rzWVyqGp5URPeIwFzgiqYovMczISQ","Stage":100,"StageText":"Ready","Title":"","Type":1,"TypeText":"Image","Url":dziPath}, {"Height":7071,"Id":"a2JY","TileFormat":"jpg","TileOverlap":1,"TileSize":254,"Width":9900});
 // try { Seadragon.Tracker._trackPageview("/a2JY.js?width=700px&height=500px"); } catch(e) {}

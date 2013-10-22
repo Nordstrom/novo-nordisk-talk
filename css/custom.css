@@ -8,3 +8,11 @@ img.logo {
   border: none !important;
   margin: 0px !important;
 }
+
+.reveal pre code {
+	max-height: none;
+}
+
+iframe {
+	overflow: hidden;
+}
