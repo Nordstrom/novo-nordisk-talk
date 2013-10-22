@@ -4,6 +4,7 @@ root = exports ? this
 parseTime = d3.time.format("%H%M").parse
 
 WorldPlot = () ->
+  highlight = null
   width = 960
   height = 650
   radius = 240
@@ -24,9 +25,9 @@ WorldPlot = () ->
   endTime  = null
 
   minRadius = 0
-  maxRadius = 100
+  maxRadius = 60
 
-  rScale = d3.scale.sqrt().range([minRadius, maxRadius]).domain([0, 200])
+  rScale = d3.scale.sqrt().range([minRadius, maxRadius]).domain([0, 60])
   
 
   mworld = null
@@ -70,16 +71,59 @@ WorldPlot = () ->
       .attr("cy", (d,i) -> projection([d.lng, d.lat])[1])
 
     c.transition()
-      .duration(900)
+      .duration(2000)
       # .delay((d,i) -> 60 * i)
       .attr("r", (d) -> rScale(d.count))
+  
+
+  showHighlight = (d) ->
+    if d
+      rect = highlight.select('.rect')
+      #   .attr("fill", "gray")
+
+      img = highlight.selectAll(".img")
+        .data([d])
+
+      line = highlight.selectAll('path').data([d])
+      line.enter().append("path")
+
+      line
+        .attr('x1', width / 2 + width / 6 + 50)
+        .attr('y1', 100)
+        .attr("stroke", "black")
+        .attr("stroke-width", 2)
+
+      line.transition()
+        .duration(200)
+        .attr "d", (d,i) ->
+          start = "#{ width / 2 + width / 6 + 50} #{100}"
+          endx = projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0]
+          endy =  projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1]
+          "M #{start} L #{endx} #{endy}"
+
+      img.enter().append('image')
+        .attr('class', 'img')
+
+      img.attr('xlink:href', d.properties.img_url)
+        .attr("width", 100)
+        .attr("height", 200)
+        .attr("x", width / 2 + width / 6)
+        .attr("y", 0)
       
+      img.transition()
+        .duration(100)
+        # .attr("x", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0])
+        # .attr("y", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1])
+        
+
+
+
+
   addData = (timediff) ->
-    if (timediff - lastSec) < 1000
+    if (timediff - lastSec) < 2000
       return false
     else
       lastSec = timediff
-    console.log(timediff)
     rtn = false
     # console.log(startTime)
     # randomStore = d3.values(locations)[Math.floor(Math.random() * d3.values(locations).length)]
@@ -120,7 +164,7 @@ WorldPlot = () ->
 
     temps.transition()
       .duration(600)
-      .delay((d,i) -> i * 60)
+      .delay((d,i) -> i * 100)
       .attr("r", 80)
       .attr("cx", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0])
       .attr("cy", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1])
@@ -130,6 +174,7 @@ WorldPlot = () ->
 
     p.exit().remove()
     updateCities()
+    showHighlight(data[1])
 
     rtn
 
@@ -216,6 +261,9 @@ WorldPlot = () ->
       #   .attr("d", path)
 
       feature = svg.selectAll("path")
+
+      highlight = g.append("g")
+      highlight.append("rect").attr("class", 'rect')
 
       # d3.timer(redraw)
 
