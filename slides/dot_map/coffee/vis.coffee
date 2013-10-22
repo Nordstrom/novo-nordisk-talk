@@ -1,6 +1,8 @@
 
 root = exports ? this
 
+parseTime = d3.time.format("%H%M").parse
+
 WorldPlot = () ->
   width = 960
   height = 650
@@ -10,10 +12,16 @@ WorldPlot = () ->
   velocity = [.013, 0.000]
   time = Date.now()
   data = []
+
+  lastSec = 0
+
+  allData = []
   g = null
   points = null
   feature = null
   cities = null
+  startTime = null
+  endTime  = null
 
   minRadius = 0
   maxRadius = 100
@@ -56,30 +64,52 @@ WorldPlot = () ->
     c.enter()
       .append("circle")
       .attr("class", "city")
-      .attr("r", (d) -> rScale(d.count))
+      # .attr("r", (d) -> rScale(d.count))
+      .attr("r", (d) -> 0)
       .attr("cx", (d,i) -> projection([d.lng, d.lat])[0])
       .attr("cy", (d,i) -> projection([d.lng, d.lat])[1])
 
-    c.attr("r", (d) -> rScale(d.count))
+    c.transition()
+      .duration(900)
+      # .delay((d,i) -> 60 * i)
+      .attr("r", (d) -> rScale(d.count))
       
-  addData = () ->
-    i = Date.now()
-    randomStore = d3.values(locations)[Math.floor(Math.random() * d3.values(locations).length)]
-    lat = randomStore.lat
-    lon = randomStore.lng
-    data.push({"type":"Feature", "id":i, "geometry":{"type":"Point", "coordinates":[lon,lat]},"properties":{'time':Date.now()}})
-    randomStore.count += 1
+  addData = (timediff) ->
+    if (timediff - lastSec) < 1000
+      return false
+    else
+      lastSec = timediff
+    console.log(timediff)
+    rtn = false
+    # console.log(startTime)
+    # randomStore = d3.values(locations)[Math.floor(Math.random() * d3.values(locations).length)]
+    # lat = randomStore.lat
+    # lon = randomStore.lng
+    # data.push({"type":"Feature", "id":i, "geometry":{"type":"Point", "coordinates":[lon,lat]},"properties":{'time':Date.now()}})
+    # randomStore.count += 1
 
-    data = data.filter (d) ->
-      tmin = Date.now() - d.properties.time
-      tmin < 1200
+    data = allData.filter (d) ->
+      d.properties.time < startTime
+
+    allData = allData.filter (d) ->
+      d.properties.time >= startTime
+
+    startTime.setMinutes(startTime.getMinutes() + 1)
+
+    if startTime > endTime
+      rtn = true
+
+    # console.log(data.length)
+    data.forEach (d) ->
+      if locations[d.properties.store_num]
+        locations[d.properties.store_num].count += 1
 
     p = points.selectAll(".symbol")
       .data(data, (d) -> d.id)
 
-    p.enter().append("path")
-      .attr("class", "symbol")
-      .attr("d", path.pointRadius((d,i) -> 3))
+    # p.enter().append("path")
+    #   .attr("class", "symbol")
+    #   .attr("d", path.pointRadius((d,i) -> 3))
 
     temps = p.enter().append("circle")
       .attr("class", "temp_symbol")
@@ -90,6 +120,7 @@ WorldPlot = () ->
 
     temps.transition()
       .duration(600)
+      .delay((d,i) -> i * 60)
       .attr("r", 80)
       .attr("cx", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0])
       .attr("cy", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1])
@@ -100,7 +131,7 @@ WorldPlot = () ->
     p.exit().remove()
     updateCities()
 
-    false
+    rtn
 
   parseStores = (stores) ->
     locs = {}
@@ -109,11 +140,28 @@ WorldPlot = () ->
       locs[s.store].count = 0
     locs
 
+  parseData = (rawData) ->
+    geoData = []
+    rawData.forEach (d) ->
+      d.date = parseTime(d.hh_mm)
+      d.id = d.store_num + "_" + d.style_id + "_" + d.hh_mm
+      store = locations[d.store_num]
+      if !store
+        console.log('no store for ' + d.store_num)
+        store = d3.values(locations)[25]
+      g = {"type":"Feature", "id":d.id, "geometry":{"type":"Point", "coordinates":[store.lng,store.lat]},"properties":{'time':d.date, 'store_num':d.store_num, 'name':d.name,'img_url':d.img_url, 'store':store}}
+      geoData.push(g)
+    startTime = rawData[0].date
+    endTime = rawData[rawData.length - 1].date
+    geoData
+
 
   chart = (selection) ->
     selection.each (rawData) ->
 
       locations = parseStores(mstores)
+
+      allData = parseData(rawData)
 
       # rawData = rawData.filter((d) -> d.country ).filter (d) -> +d.count > 5
 
@@ -220,17 +268,19 @@ $ ->
 
   worldplot = WorldPlot()
 
-  display = (error, world, stores) ->
+  display = (error, world, stores, data) ->
     console.log(error)
 
     worldplot.world(world)
     worldplot.stores(stores)
-    plotData("#vis", [1,2,3], worldplot)
+    plotData("#vis", data, worldplot)
+    worldplot.start()
 
 
   queue()
     .defer(d3.json, "data/us.json")
     .defer(d3.json, "data/stores.json")
+    .defer(d3.tsv, "data/transaction_map.tsv")
     .await(display)
 
   # function that is executed once a message is sent.
