@@ -222,9 +222,8 @@
         </section>
 
         <section>
-          <h3>Scale</h3>
-          <br/>
-          <p>Recommendo</p>
+          <h3>Scaling Recommendations</h3>
+          <img class="plain" src="images/recommendo_design.png">
         </section>
 
         <section>
@@ -232,16 +231,8 @@
         </section>
 
         <section>
-          <h3>Color</h3>
-        </section>
-
-        <section>
-          <h3>Micro Color</h3>
-          <img class="plain" src="images/micro.png" />
-        </section>
-
-        <section data-background="#C02942">
-          <h3 class="huge boxed">Macro Color</h3>
+          <h3>An Exploration of Color</h3>
+          <img src="images/color_wheel.png" class="plain" />
         </section>
 
         <section>
@@ -256,14 +247,41 @@
 
         <section>
           <h3>Color Scoring Photos</h3>
-          <ol>
+          <pre>
+            <code>
+  # Pseudo Python
+  from PIL import Image
+  from colormath.color_objects import RGBColor
+
+  photo = Image.open(photo_path)
+  for x, y in dimensions(photo):
+    # Extract the RGB color of each pixel
+    pixel_rgb = tuple(photo.getpixel((x, y)))
+
+    # Convert RGB to LAB
+    lab_color = RGBColor(pixel_rgb).convert_to('lab')
+
+    # Find the nearest match in the X11 color space
+    x11_color = x11_color_space.find_closest_match(lab_color)
+    color_counter.increment(x11_color)
+
+  # Take the top colors
+  top_colors = color_counter.top_colors(min_score=.17)
+
+  # Update the product metadata with the color scores
+  product_metadata.set('color_scores', top_colors)
+            </code>
+          </pre>
+        </section>
+
+         <!--  <ol>
             <li>Load pattern swatch for every garment photo</li>
             <li>Python Imaging Library (PIL) to extract RGB of each pixel</li>
             <li>Convert pixel from RGB to LAB and map to nearest standard color (i.e. X11 color space)</li>
             <li>Throw away colors that don't meet minimum threshold</li>
             <li>Calculate % of pixels each remaining color comprises</li>
             <li>Augment product meta-data with color score data</li>
-          </ol>
+          </ol> -->
         </section>        
 
         <section>
@@ -310,11 +328,6 @@
           <img class="plain" src="images/pantone_bump.png" />
         </section>
 
-        <section>
-          <h3>Micro Color</h3>
-          <img class="plain" src="images/micro.png" />
-        </section>
-
         <section data-state="start_fingerprints">
           <h3>Customer Color Fingerprints</h3>
           <iframe class="stretch" id="fingerprints_iframe" src="slides/fingerprints/index.html"></iframe>
@@ -336,10 +349,14 @@
         </section>
 
         <section>
-          <h3>TODO: BIG FINNISH</h3>
+          <h3>Thank You!</h3>
+          <p>Questions? Ask ds@nordstrom.com<p><br/>
+          <p>This Presentation<br /><a href="http://nordstrom.github.io/stratanyc">nordstrom.github.io/stratanyc</a></p>
+          <br/>
+          <p>Nordstrom Technology is Hiring<br><a href="http://techcareers.nordstrom.com/">techcareers.nordstrom.com</a></p>
         </section>
 
-        	<section>
+       	<section>
           <a><img class="plain" src="images/DataLab-04.png" align = "center" width = "60%", height = "40%"/></a>
           <a><img class="plain" src="images/Profile_jason.png" align = "center" width = "20%", height = "30%"/></a>
           <a><img class="plain" src="images/Profile_elissa.png" align = "center" width = "20%", height = "30%"/></a>
@@ -355,12 +372,16 @@
         <section>
           <h3>Attributions</h3>
           <ul>
+            <li>Fisheye zoom visualization inspired by NY Times Fashion Week Editor's Picks - <a href="http://nyti.ms/14Rsyfj">http://nyti.ms/14Rsyfj</a></li>
             <li><a href="http://thenounproject.com/noun/database/#icon-No9658" target="_blank">Database</a> designed by <a href="http://thenounproject.com/monstercritic" target="_blank">Sergey Shmidt</a> from The Noun Project</li>
             <li><a href="http://thenounproject.com/noun/engine/#icon-No17617" target="_blank">Engine</a> designed by <a href="http://thenounproject.com/nebson" target="_blank">Ben Johnson</a> from The Noun Project</li>
             <li><a href="http://thenounproject.com/noun/cloud-upload/#icon-No2633" target="_blank">Cloud Upload</a> designed by <a href="http://thenounproject.com/adamwhitcroft" target="_blank">Adam Whitcroft</a> from The Noun Project</li>
             <li><a href="http://thenounproject.com/noun/cloud/#icon-No6853" target="_blank">Cloud</a> designed by <a href="http://thenounproject.com/pjsmits" target="_blank">Pieter J. Smits</a> from The Noun Project</li>
             <li><a href="http://thenounproject.com/noun/iphone/#icon-No414" target="_blank">iPhone</a>  from The Noun Project</li>
             <li><a href="http://thenounproject.com/noun/laptop/#icon-No114" target="_blank">Laptop</a>  from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/servers/#icon-No3210" target="_blank">Servers</a> designed by <a href="http://thenounproject.com/Ken Hawkins" target="_blank">Ken Hawkins</a> from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/funnel/#icon-No1918" target="_blank">Funnel</a> designed by <a href="http://thenounproject.com/patrickehawaii" target="_blank">Patrick N.</a> from The Noun Project</li>
+            <li><a href="http://thenounproject.com/noun/timer/#icon-No19926" target="_blank">Timer</a> designed by <a href="http://thenounproject.com/Hanzoua" target="_blank">Vladimir</a> from The Noun Project</li>
           </ul>
         </section>
 				
