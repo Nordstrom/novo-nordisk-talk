@@ -24,7 +24,6 @@ var collection = graphic.selectAll(".collection")
     });
 
 var canvas = collection.insert("a", ".description")
-    .attr("href", function(d) { return d.slug + ".jpg"; })
   .append("canvas");
 
 // var canvas = collection.append("canvas");
