@@ -145,6 +145,8 @@ Reveal.addEventListener( 'ready', function( event ) {
       sendIframe('color_trends_iframe', 'update');
     } else if (fragmentId == 'color_trends_update_again') {
       sendIframe('color_trends_iframe', 'update_again');
+    } else if (fragmentId == 'triangles_start') {
+      sendIframe('triangles_iframe', 'start');
     }
   }, false );
 

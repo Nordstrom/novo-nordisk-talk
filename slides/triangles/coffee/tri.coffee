@@ -328,7 +328,6 @@ Triangles = () ->
         .attr("class", "comp_title")
         .text("Complementary Colors")
 
-      update()
 
 
   # updateCenters = (artists) ->
@@ -409,6 +408,10 @@ Triangles = () ->
     targetWidth = parent.width()
     svg.attr("width", targetWidth)
     svg.attr("height", Math.round(targetWidth / aspect))
+
+
+  chart.start = () ->
+    update()
 
   chart.updateDisplay = (_) ->
     user_id = _
@@ -529,4 +532,12 @@ $ ->
   d3.select(window)
     .on("resize", resize)
 
+  startPlot = (e) ->
+    action = e.data
+    if action == 'start'
+      plot.start()
+    else if action == 'update'
+      plot.filter()
+
+  window.addEventListener('message', startPlot, false)
 
