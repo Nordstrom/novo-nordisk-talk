@@ -537,7 +537,10 @@ $ ->
     if action == 'start'
       plot.start()
     else if action == 'update'
-      plot.filter()
+      id = 'g-button-amounts'
+      activateButton(id)
+      newLayout = id.split("-")[2]
+      plot.toggleLayout(newLayout)
 
   window.addEventListener('message', startPlot, false)
 
