@@ -322,7 +322,7 @@ $ ->
     worldplot.world(world)
     worldplot.stores(stores)
     plotData("#vis", data, worldplot)
-    worldplot.start()
+    # worldplot.start()
 
 
   queue()
