@@ -212,10 +212,15 @@ WorldPlot = () ->
       if !store
         # console.log('no store for ' + d.store_num)
         store = d3.values(locations)[25]
-      local_url = d.img_url.split("/")
-      local_url = local_url[local_url.length - 1]
-      local_url = "data/styles/" + local_url
-      console.log(local_url)
+
+      if window.hostname == 'localhost'
+        local_url = d.img_url.split("/")
+        local_url = local_url[local_url.length - 1]
+        local_url = "data/styles/" + local_url
+        console.log(local_url)
+      else
+        local_url = d.img_url
+        
       g = {"type":"Feature", "id":d.id, "geometry":{"type":"Point", "coordinates":[store.lng,store.lat]},"properties":{'time':d.date, 'store_num':d.store_num, 'name':d.name,'img_url':local_url, 'store':store}}
       geoData.push(g)
     startTime = rawData[0].date
