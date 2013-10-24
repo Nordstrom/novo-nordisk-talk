@@ -338,7 +338,7 @@ $ ->
   worldplot = WorldPlot()
 
   display = (error, world, stores, data) ->
-    console.log(error)
+    # console.log(error)
 
     worldplot.world(world)
     worldplot.stores(stores)
