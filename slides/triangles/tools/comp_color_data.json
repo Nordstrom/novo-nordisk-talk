@@ -1,0 +1,810 @@
+{
+  "150": {
+    "color": {
+      "grayscale": false,
+      "hex": "#fa8072",
+      "hsv": [
+        0.0171569,
+        0.544,
+        0.980392
+      ],
+      "id": 150,
+      "name": "Salmon",
+      "rank": 10,
+      "rgb": [
+        250,
+        128,
+        114
+      ]
+    },
+    "epoch": "1372636800",
+    "styles": [
+      {
+        "color_name": "GERANIUM",
+        "percent_coverage": 0.29,
+        "product_photo_id": 7860275,
+        "score": 79,
+        "style_id": 2987627,
+        "style_number": "232160",
+        "swatch_photo_id": 7860276
+      },
+      {
+        "color_name": "RED HEATHER",
+        "percent_coverage": 0.82,
+        "product_photo_id": 7901098,
+        "score": 71,
+        "style_id": 3495800,
+        "style_number": "690504",
+        "swatch_photo_id": 7901101
+      },
+      {
+        "color_name": "RED HEATHER",
+        "percent_coverage": 0.82,
+        "product_photo_id": 7927196,
+        "score": 49,
+        "style_id": 3500235,
+        "style_number": "694170",
+        "swatch_photo_id": 7927198
+      },
+      {
+        "color_name": "PINK VIRTUE",
+        "percent_coverage": 0.67,
+        "product_photo_id": 7963446,
+        "score": 28,
+        "style_id": 3525204,
+        "style_number": "913313",
+        "swatch_photo_id": 7963449
+      },
+      {
+        "color_name": "PINK",
+        "percent_coverage": 1.0,
+        "product_photo_id": 8057012,
+        "score": 25,
+        "style_id": 3506661,
+        "style_number": "697696",
+        "swatch_photo_id": 8013552
+      },
+      {
+        "color_name": "ELECTRO CORAL",
+        "percent_coverage": 0.66,
+        "product_photo_id": 8101757,
+        "score": 22,
+        "style_id": 3459295,
+        "style_number": "664396",
+        "swatch_photo_id": 8057831
+      },
+      {
+        "color_name": "CORAL SPICE",
+        "percent_coverage": 0.84,
+        "product_photo_id": 7644376,
+        "score": 22,
+        "style_id": 3445697,
+        "style_number": "655446",
+        "swatch_photo_id": 7643956
+      },
+      {
+        "color_name": "CORAL PRINT",
+        "percent_coverage": 0.38,
+        "product_photo_id": 8048045,
+        "score": 21,
+        "style_id": 3542663,
+        "style_number": "924725",
+        "swatch_photo_id": 8048046
+      },
+      {
+        "color_name": "CORAL REEF",
+        "percent_coverage": 1.0,
+        "product_photo_id": 7978076,
+        "score": 20,
+        "style_id": 3440528,
+        "style_number": "651860",
+        "swatch_photo_id": 7978081
+      },
+      {
+        "color_name": "HEATHER RED",
+        "percent_coverage": 0.61,
+        "product_photo_id": 7934497,
+        "score": 19,
+        "style_id": 3514360,
+        "style_number": "905108",
+        "swatch_photo_id": 7934545
+      },
+      {
+        "color_name": "TOMATO",
+        "percent_coverage": 0.76,
+        "product_photo_id": 8051206,
+        "score": 19,
+        "style_id": 3542732,
+        "style_number": "924770",
+        "swatch_photo_id": 8051222
+      },
+      {
+        "color_name": "CORAL GLOW",
+        "percent_coverage": 0.38,
+        "product_photo_id": 7957701,
+        "score": 19,
+        "style_id": 3416447,
+        "style_number": "635389",
+        "swatch_photo_id": 7957704
+      },
+      {
+        "color_name": "FIESTA/ NAVY",
+        "percent_coverage": 0.26,
+        "product_photo_id": 7998615,
+        "score": 18,
+        "style_id": 3501676,
+        "style_number": "695452",
+        "swatch_photo_id": 7998622
+      },
+      {
+        "color_name": "NEON CORAL",
+        "percent_coverage": 0.42,
+        "product_photo_id": 8079827,
+        "score": 18,
+        "style_id": 3505740,
+        "style_number": "697694",
+        "swatch_photo_id": 7974802
+      },
+      {
+        "color_name": "RED- CAYENNE",
+        "percent_coverage": 0.64,
+        "product_photo_id": 7912289,
+        "score": 18,
+        "style_id": 3427025,
+        "style_number": "642411",
+        "swatch_photo_id": 7900100
+      },
+      {
+        "color_name": "CORAL PEACH",
+        "percent_coverage": 0.47,
+        "product_photo_id": 7967048,
+        "score": 16,
+        "style_id": 3525204,
+        "style_number": "913313",
+        "swatch_photo_id": 7963472
+      },
+      {
+        "color_name": "PINK- PARADISE",
+        "percent_coverage": 0.56,
+        "product_photo_id": 7968576,
+        "score": 16,
+        "style_id": 3467183,
+        "style_number": "670125",
+        "swatch_photo_id": 7968831
+      },
+      {
+        "color_name": "POPPY",
+        "percent_coverage": 0.6,
+        "product_photo_id": 8021704,
+        "score": 16,
+        "style_id": 3507153,
+        "style_number": "699545",
+        "swatch_photo_id": 8021705
+      },
+      {
+        "color_name": "CORAL",
+        "percent_coverage": 0.3,
+        "product_photo_id": 8067092,
+        "score": 15,
+        "style_id": 3516724,
+        "style_number": "906386",
+        "swatch_photo_id": 7928739
+      },
+      {
+        "color_name": "PINK ROSE",
+        "percent_coverage": 0.58,
+        "product_photo_id": 7296058,
+        "score": 15,
+        "style_id": 3307432,
+        "style_number": "557365",
+        "swatch_photo_id": 7296425
+      }
+    ]
+  },
+  "57": {
+    "color": {
+      "grayscale": false,
+      "hex": "#556b2f",
+      "hsv": [
+        0.227778,
+        0.560748,
+        0.419608
+      ],
+      "id": 57,
+      "name": "Dark Olive Green",
+      "rank": 51,
+      "rgb": [
+        85,
+        107,
+        47
+      ]
+    },
+    "epoch": "1372636800",
+    "styles": [
+      {
+        "color_name": "OLIVE",
+        "percent_coverage": 0.84,
+        "product_photo_id": 7896217,
+        "score": 44,
+        "style_id": 3300534,
+        "style_number": "385157",
+        "swatch_photo_id": 7919095
+      },
+      {
+        "color_name": "OLIVE",
+        "percent_coverage": 0.98,
+        "product_photo_id": 7926572,
+        "score": 40,
+        "style_id": 3506385,
+        "style_number": "698829",
+        "swatch_photo_id": 7926615
+      },
+      {
+        "color_name": "OLIVE TUSCAN",
+        "percent_coverage": 0.41,
+        "product_photo_id": 8115058,
+        "score": 33,
+        "style_id": 3471349,
+        "style_number": "673197",
+        "swatch_photo_id": 7897590
+      },
+      {
+        "color_name": "MOSS",
+        "percent_coverage": 0.85,
+        "product_photo_id": 7951615,
+        "score": 32,
+        "style_id": 3275036,
+        "style_number": "533104",
+        "swatch_photo_id": 7951616
+      },
+      {
+        "color_name": "MOOSE",
+        "percent_coverage": 0.21,
+        "product_photo_id": 7895218,
+        "score": 29,
+        "style_id": 3504627,
+        "style_number": "692069",
+        "swatch_photo_id": 8007523
+      },
+      {
+        "color_name": "ST OLD SAGE",
+        "percent_coverage": 0.55,
+        "product_photo_id": 8109933,
+        "score": 29,
+        "style_id": 3191709,
+        "style_number": "369898",
+        "swatch_photo_id": 7967448
+      },
+      {
+        "color_name": "BURGUNDY",
+        "percent_coverage": 0.55,
+        "product_photo_id": 8070116,
+        "score": 27,
+        "style_id": 3471559,
+        "style_number": "673350",
+        "swatch_photo_id": 8070151
+      },
+      {
+        "color_name": "BRITISH KHAKI",
+        "percent_coverage": 0.27,
+        "product_photo_id": 8069153,
+        "score": 27,
+        "style_id": 3178542,
+        "style_number": "358988",
+        "swatch_photo_id": 8069163
+      },
+      {
+        "color_name": "DARK OLIVE",
+        "percent_coverage": 0.57,
+        "product_photo_id": 8027316,
+        "score": 26,
+        "style_id": 3483879,
+        "style_number": "682111",
+        "swatch_photo_id": 8027336
+      },
+      {
+        "color_name": "CHARCOAL",
+        "percent_coverage": 0.38,
+        "product_photo_id": 8059641,
+        "score": 26,
+        "style_id": 3496812,
+        "style_number": "691566",
+        "swatch_photo_id": 7899798
+      },
+      {
+        "color_name": "THURSDAY BROWNS",
+        "percent_coverage": 0.69,
+        "product_photo_id": 6940793,
+        "score": 25,
+        "style_id": 3302561,
+        "style_number": "553551",
+        "swatch_photo_id": 6940796
+      },
+      {
+        "color_name": "OLIVE",
+        "percent_coverage": 0.3,
+        "product_photo_id": 8094125,
+        "score": 22,
+        "style_id": 3477283,
+        "style_number": "677245",
+        "swatch_photo_id": 7909640
+      },
+      {
+        "color_name": "BARREL BROWN",
+        "percent_coverage": 0.53,
+        "product_photo_id": 8106447,
+        "score": 20,
+        "style_id": 3505292,
+        "style_number": "697987",
+        "swatch_photo_id": 7912013
+      },
+      {
+        "color_name": "MOSS",
+        "percent_coverage": 0.96,
+        "product_photo_id": 5915283,
+        "score": 19,
+        "style_id": 2894318,
+        "style_number": "35910",
+        "swatch_photo_id": 5278442
+      },
+      {
+        "color_name": "BLACK",
+        "percent_coverage": 0.17,
+        "product_photo_id": 8013980,
+        "score": 19,
+        "style_id": 3494714,
+        "style_number": "689975",
+        "swatch_photo_id": 7877313
+      },
+      {
+        "color_name": "CAMO GREEN",
+        "percent_coverage": 0.34,
+        "product_photo_id": 7943493,
+        "score": 19,
+        "style_id": 3504399,
+        "style_number": "697489",
+        "swatch_photo_id": 7943536
+      },
+      {
+        "color_name": "OLIVE TUSCANY",
+        "percent_coverage": 0.36,
+        "product_photo_id": 7655092,
+        "score": 17,
+        "style_id": 3445697,
+        "style_number": "655446",
+        "swatch_photo_id": 7656404
+      },
+      {
+        "color_name": "OLIVE",
+        "percent_coverage": 0.24,
+        "product_photo_id": 7620149,
+        "score": 15,
+        "style_id": 3395235,
+        "style_number": "621516",
+        "swatch_photo_id": 7620486
+      },
+      {
+        "color_name": "Dark Biege",
+        "percent_coverage": 0.26,
+        "product_photo_id": 6319767,
+        "score": 14,
+        "style_id": 3151764,
+        "style_number": "339930",
+        "swatch_photo_id": 6319768
+      },
+      {
+        "color_name": "BLACKSTONE",
+        "percent_coverage": 0.72,
+        "product_photo_id": 7883732,
+        "score": 14,
+        "style_id": 3461813,
+        "style_number": "666230",
+        "swatch_photo_id": 7883801
+      }
+    ]
+  },
+  "45": {
+    "color": {
+      "grayscale": false,
+      "hex": "#ff7f50",
+      "hsv": [
+        0.0447619,
+        0.686275,
+        1.0
+      ],
+      "id": 45,
+      "name": "Coral",
+      "rank": 13,
+      "rgb": [
+        255,
+        127,
+        80
+      ]
+    },
+    "epoch": "1372636800",
+    "styles": [
+      {
+        "color_name": "CORAL TIE DYE",
+        "percent_coverage": 0.39,
+        "product_photo_id": 7866216,
+        "score": 15,
+        "style_id": 3479535,
+        "style_number": "679028",
+        "swatch_photo_id": 7866218
+      },
+      {
+        "color_name": "ORANGE",
+        "percent_coverage": 0.41,
+        "product_photo_id": 8019760,
+        "score": 14,
+        "style_id": 3525227,
+        "style_number": "913347",
+        "swatch_photo_id": 8019761
+      },
+      {
+        "color_name": "CORAL PRINT",
+        "percent_coverage": 0.2,
+        "product_photo_id": 8048045,
+        "score": 13,
+        "style_id": 3542663,
+        "style_number": "924725",
+        "swatch_photo_id": 8048046
+      },
+      {
+        "color_name": "ORANGE  SUNSET",
+        "percent_coverage": 0.5,
+        "product_photo_id": 7661912,
+        "score": 12,
+        "style_id": 3351361,
+        "style_number": "587840",
+        "swatch_photo_id": 7662036
+      },
+      {
+        "color_name": "FLAME",
+        "percent_coverage": 0.34,
+        "product_photo_id": 7237589,
+        "score": 10,
+        "style_id": 3064161,
+        "style_number": "277528",
+        "swatch_photo_id": 6864080
+      },
+      {
+        "color_name": "RED PAPRIKA",
+        "percent_coverage": 0.33,
+        "product_photo_id": 8073243,
+        "score": 8,
+        "style_id": 3438286,
+        "style_number": "650927",
+        "swatch_photo_id": 8073358
+      },
+      {
+        "color_name": "CORAL BLAZE",
+        "percent_coverage": 0.3,
+        "product_photo_id": 8007221,
+        "score": 7,
+        "style_id": 3386414,
+        "style_number": "615533",
+        "swatch_photo_id": 8007222
+      },
+      {
+        "color_name": "POPPY",
+        "percent_coverage": 0.21,
+        "product_photo_id": 8021704,
+        "score": 7,
+        "style_id": 3507153,
+        "style_number": "699545",
+        "swatch_photo_id": 8021705
+      },
+      {
+        "color_name": "ORANGE SUNSET",
+        "percent_coverage": 0.8,
+        "product_photo_id": 7773391,
+        "score": 6,
+        "style_id": 3351058,
+        "style_number": "587576",
+        "swatch_photo_id": 7773571
+      },
+      {
+        "color_name": "FLOWER SHADOWS/ CREAMSICLE",
+        "percent_coverage": 0.23,
+        "product_photo_id": 7736492,
+        "score": 6,
+        "style_id": 3069188,
+        "style_number": "280990",
+        "swatch_photo_id": 7739262
+      },
+      {
+        "color_name": "TUSCANY",
+        "percent_coverage": 0.46,
+        "product_photo_id": 7680713,
+        "score": 6,
+        "style_id": 2894181,
+        "style_number": "35753",
+        "swatch_photo_id": 7680741
+      },
+      {
+        "color_name": "COPPER",
+        "percent_coverage": 0.24,
+        "product_photo_id": 7686409,
+        "score": 6,
+        "style_id": 3459880,
+        "style_number": "664796",
+        "swatch_photo_id": 7686448
+      },
+      {
+        "color_name": "CRUSH",
+        "percent_coverage": 0.61,
+        "product_photo_id": 7929458,
+        "score": 5,
+        "style_id": 2905011,
+        "style_number": "92853",
+        "swatch_photo_id": 7633502
+      },
+      {
+        "color_name": "ORANGE/ IVORY COLORBLOCK",
+        "percent_coverage": 0.34,
+        "product_photo_id": 7981781,
+        "score": 5,
+        "style_id": 3434985,
+        "style_number": "648306",
+        "swatch_photo_id": 7876790
+      },
+      {
+        "color_name": "RED POINSETTIA",
+        "percent_coverage": 0.2,
+        "product_photo_id": 7940299,
+        "score": 4,
+        "style_id": 3471528,
+        "style_number": "673313",
+        "swatch_photo_id": 7940367
+      },
+      {
+        "color_name": "ORANGE",
+        "percent_coverage": 0.42,
+        "product_photo_id": 7857876,
+        "score": 4,
+        "style_id": 3495031,
+        "style_number": "690253",
+        "swatch_photo_id": 7854932
+      },
+      {
+        "color_name": "MELON TINT/ BRIGHT CITRUS",
+        "percent_coverage": 0.59,
+        "product_photo_id": 7837566,
+        "score": 4,
+        "style_id": 3481117,
+        "style_number": "680105",
+        "swatch_photo_id": 7837625
+      },
+      {
+        "color_name": "ORANGE SUNSET",
+        "percent_coverage": 0.59,
+        "product_photo_id": 7661429,
+        "score": 3,
+        "style_id": 3223084,
+        "style_number": "392986",
+        "swatch_photo_id": 7661474
+      },
+      {
+        "color_name": "CORAL",
+        "percent_coverage": 0.2,
+        "product_photo_id": 7978994,
+        "score": 3,
+        "style_id": 3458333,
+        "style_number": "663810",
+        "swatch_photo_id": 7978998
+      },
+      {
+        "color_name": "ORANGE POP",
+        "percent_coverage": 0.75,
+        "product_photo_id": 7704259,
+        "score": 3,
+        "style_id": 3351098,
+        "style_number": "587623",
+        "swatch_photo_id": 7704500
+      }
+    ]
+  },
+  "141": {
+    "color": {
+      "grayscale": false,
+      "hex": "#ffc0cb",
+      "hsv": [
+        0.970899,
+        0.247059,
+        1.0
+      ],
+      "id": 141,
+      "name": "Pink",
+      "rank": 123,
+      "rgb": [
+        255,
+        192,
+        203
+      ]
+    },
+    "epoch": "1372636800",
+    "styles": [
+      {
+        "color_name": "DESERT ROSE",
+        "percent_coverage": 0.38,
+        "product_photo_id": 7919385,
+        "score": 114,
+        "style_id": 2977615,
+        "style_number": "224313",
+        "swatch_photo_id": 8035565
+      },
+      {
+        "color_name": "PINK- PAPAYA",
+        "percent_coverage": 0.36,
+        "product_photo_id": 7950823,
+        "score": 61,
+        "style_id": 3409845,
+        "style_number": "630946",
+        "swatch_photo_id": 7951008
+      },
+      {
+        "color_name": "ROSE-SPHINX",
+        "percent_coverage": 0.71,
+        "product_photo_id": 7820496,
+        "score": 56,
+        "style_id": 3332306,
+        "style_number": "574977",
+        "swatch_photo_id": 7820481
+      },
+      {
+        "color_name": "PINK- MAUVE",
+        "percent_coverage": 0.7,
+        "product_photo_id": 8059818,
+        "score": 55,
+        "style_id": 3385514,
+        "style_number": "614901",
+        "swatch_photo_id": 8059819
+      },
+      {
+        "color_name": "PINK- BUBBLEGUM",
+        "percent_coverage": 0.48,
+        "product_photo_id": 7810187,
+        "score": 50,
+        "style_id": 3409845,
+        "style_number": "630946",
+        "swatch_photo_id": 7810188
+      },
+      {
+        "color_name": "SALMON",
+        "percent_coverage": 0.71,
+        "product_photo_id": 8070458,
+        "score": 44,
+        "style_id": 3499207,
+        "style_number": "693324",
+        "swatch_photo_id": 8070461
+      },
+      {
+        "color_name": "PINK ELEPHANTS",
+        "percent_coverage": 0.5,
+        "product_photo_id": 7894608,
+        "score": 37,
+        "style_id": 3479535,
+        "style_number": "679028",
+        "swatch_photo_id": 7894832
+      },
+      {
+        "color_name": "PINK FAIRYTALE",
+        "percent_coverage": 1.0,
+        "product_photo_id": 7857137,
+        "score": 35,
+        "style_id": 2880790,
+        "style_number": "172545",
+        "swatch_photo_id": 7708523
+      },
+      {
+        "color_name": "PINK FAIRYTALE",
+        "percent_coverage": 0.69,
+        "product_photo_id": 7576417,
+        "score": 33,
+        "style_id": 2791707,
+        "style_number": "60455",
+        "swatch_photo_id": 7576617
+      },
+      {
+        "color_name": "LILAC- HERB",
+        "percent_coverage": 0.52,
+        "product_photo_id": 7694969,
+        "score": 30,
+        "style_id": 3357892,
+        "style_number": "592671",
+        "swatch_photo_id": 7695058
+      },
+      {
+        "color_name": "RED- FIERY",
+        "percent_coverage": 0.6,
+        "product_photo_id": 7695777,
+        "score": 30,
+        "style_id": 3385514,
+        "style_number": "614901",
+        "swatch_photo_id": 7695834
+      },
+      {
+        "color_name": "LIGHT PINK SKIN",
+        "percent_coverage": 0.59,
+        "product_photo_id": 8107716,
+        "score": 27,
+        "style_id": 3281599,
+        "style_number": "528847",
+        "swatch_photo_id": 7854764
+      },
+      {
+        "color_name": "PURPLE HAZE",
+        "percent_coverage": 0.35,
+        "product_photo_id": 7950383,
+        "score": 26,
+        "style_id": 3512349,
+        "style_number": "903285",
+        "swatch_photo_id": 7950386
+      },
+      {
+        "color_name": "PINK FAIRYTALE",
+        "percent_coverage": 0.78,
+        "product_photo_id": 7681685,
+        "score": 24,
+        "style_id": 2854055,
+        "style_number": "144167",
+        "swatch_photo_id": 7682362
+      },
+      {
+        "color_name": "PINK FAIRYTALE",
+        "percent_coverage": 1.0,
+        "product_photo_id": 7830543,
+        "score": 21,
+        "style_id": 3073858,
+        "style_number": "283991",
+        "swatch_photo_id": 7807773
+      },
+      {
+        "color_name": "PINK ELEPHANTS",
+        "percent_coverage": 0.5,
+        "product_photo_id": 7890703,
+        "score": 20,
+        "style_id": 3258704,
+        "style_number": "521492",
+        "swatch_photo_id": 7890704
+      },
+      {
+        "color_name": "PINK",
+        "percent_coverage": 0.57,
+        "product_photo_id": 8046930,
+        "score": 20,
+        "style_id": 3536621,
+        "style_number": "920965",
+        "swatch_photo_id": 8046931
+      },
+      {
+        "color_name": "PINK FAIRYTALE",
+        "percent_coverage": 0.51,
+        "product_photo_id": 7830551,
+        "score": 17,
+        "style_id": 3090717,
+        "style_number": "295299",
+        "swatch_photo_id": 7701198
+      },
+      {
+        "color_name": "PEACH",
+        "percent_coverage": 0.36,
+        "product_photo_id": 7940664,
+        "score": 15,
+        "style_id": 3515890,
+        "style_number": "905832",
+        "swatch_photo_id": 7940665
+      },
+      {
+        "color_name": "PRISM PINK",
+        "percent_coverage": 0.32,
+        "product_photo_id": 8132805,
+        "score": 14,
+        "style_id": 3241736,
+        "style_number": "507351",
+        "swatch_photo_id": 7877470
+      }
+    ]
+  }
+}

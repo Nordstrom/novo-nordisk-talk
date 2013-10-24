@@ -113,6 +113,7 @@ Triangles = () ->
   points = null
   details = null
   comps = null
+  images = null
   width = 800
   height = 520
   aspect = (width) / (height)
@@ -190,31 +191,52 @@ Triangles = () ->
       flip = (i % 2 == 0)
     flip
 
-  showDetails = (d) ->
-    xcord = 0
-    text = details.append("text")
-      .attr("class", "detail_text")
-      .attr("x", width - 40)
-      .attr("y", d.coords.y)
-      .attr("dy", 5)
-      .attr("opacity", 1e-6)
-      .attr("fill" ,() -> d3.hsl(d.rgb_string).darker(1))
-      .attr("text-anchor", "end")
-      .text(d.name)
-      .each((d) -> xcord = this.getBBox().x)
+  showImages = (d) ->
+    color_id = d.color_id
+    if !color_id
+      color_id = d.id
+    console.log(color_id)
+    jpegs = []
+    [0..3].forEach (i) ->
+      jpegs.push("img/style_imgs/#{color_id}_#{i}.jpg")
 
+    img = images.selectAll('.img').data(jpegs)
+
+    img.enter().append("image")
+      .attr("xlink:href", (d) -> d)
+      .attr("width", 75)
+      .attr("height", 115)
+      .attr("x", (width - 75) - 40)
+      .attr("y", (d,i) -> (115 + 10) * i)
+
+
+  showDetails = (d) ->
+    # xcord = 0
+    # text = details.append("text")
+    #   .attr("class", "detail_text")
+    #   .attr("x", width - 40)
+    #   .attr("y", d.coords.y)
+    #   .attr("dy", 5)
+    #   .attr("opacity", 1e-6)
+    #   .attr("fill" ,() -> d3.hsl(d.rgb_string).darker(1))
+    #   .attr("text-anchor", "end")
+    #   .text(d.name)
+    #   .each((d) -> xcord = this.getBBox().x)
+
+    xcord = (width - 40) - 20
     path = details.append("path")
       .attr("d", "M #{d.coords.x} #{d.coords.y} L #{d.coords.x} #{d.coords.y}")
     path.transition().duration(200)
       .attr("d", "M #{d.coords.x} #{d.coords.y} L #{xcord - 10} #{d.coords.y}")
-    text.transition().duration(200)
-      .delay(100)
-      .attr("opacity", 1)
+    # text.transition().duration(200)
+    #   .delay(100)
+    #   .attr("opacity", 1)
 
 
   hideDetails = (d) ->
     details.select("path").remove()
-    details.select("text").remove()
+    images.selectAll(".img").remove()
+    # details.select("text").remove()
 
   mouseover = (d,i) ->
     triG = d3.select(this)
@@ -224,6 +246,7 @@ Triangles = () ->
       .attr("stroke-width", 3)
       .attr("stroke", (d) -> d3.hsl(tri.attr("fill")).darker(1))
     showDetails(d)
+    showImages(d)
 
   mouseout = (d,i) ->
     triG = d3.select(this)
@@ -319,6 +342,7 @@ Triangles = () ->
       points = g.append("g").attr("id", "vis_triangles")
       comps = g.append("g").attr("id", "vis_comps")
       details = g.append("g").attr("id", "vis_details")
+      images = g.append("g").attr("id", "vis_images")
       comps.append("text")
         .attr("text-anchor", "end")
         .attr("x", compCord.x - (compCord.r / 2))
@@ -508,6 +532,7 @@ $ ->
   display = (error, data) ->
     setupSearch(data)
     plotData("#vis", data, plot)
+    plot.start()
 
   queue()
     # .defer(d3.tsv, "data/color_palettes_rgb.txt")
