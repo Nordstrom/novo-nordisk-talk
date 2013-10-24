@@ -7,3 +7,4 @@ node_modules/
 dzc_output_files*
 *.swo
 *.swp
+slides/dot_files/data/styles/*.jpg
