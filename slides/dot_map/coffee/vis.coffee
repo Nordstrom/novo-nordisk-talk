@@ -14,7 +14,7 @@ WorldPlot = () ->
   time = Date.now()
   data = []
 
-  lastSec = 0
+  lastSec = -1 
 
   allData = []
   g = null
@@ -24,10 +24,10 @@ WorldPlot = () ->
   startTime = null
   endTime  = null
 
-  minRadius = 0
+  minRadius = 1
   maxRadius = 60
 
-  rScale = d3.scale.sqrt().range([minRadius, maxRadius]).domain([0, 60])
+  rScale = d3.scale.sqrt().range([minRadius, maxRadius]).domain([0, 100])
   
 
   mworld = null
@@ -58,7 +58,9 @@ WorldPlot = () ->
   #   
   #   false
 
-  updateCities = () ->
+  updateCities = (duration) ->
+    if !duration
+      duration = 9000
     c = cities.selectAll(".city")
       .data(d3.values(locations))
 
@@ -71,9 +73,10 @@ WorldPlot = () ->
       .attr("cy", (d,i) -> projection([d.lng, d.lat])[1])
 
     c.transition()
-      .duration(2000)
+      .duration(duration)
       # .delay((d,i) -> 60 * i)
       .attr("r", (d) -> rScale(d.count))
+      # .each((d) -> console.log(rScale(d.count)))
   
 
   showHighlight = (d) ->
@@ -83,6 +86,7 @@ WorldPlot = () ->
 
       img = highlight.selectAll(".img")
         .data([d])
+
 
       line = highlight.selectAll('path').data([d])
       line.enter().append("path")
@@ -94,7 +98,7 @@ WorldPlot = () ->
         .attr("stroke-width", 2)
 
       line.transition()
-        .duration(200)
+        .duration(400)
         .attr "d", (d,i) ->
           start = "#{ width / 2 + width / 6 + 50} #{100}"
           endx = projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0]
@@ -109,9 +113,20 @@ WorldPlot = () ->
         .attr("height", 200)
         .attr("x", width / 2 + width / 6)
         .attr("y", 0)
+
+      title = highlight.selectAll(".title")
+        .data([d])
+
+      title.enter().append('text')
+        .attr('class', 'title')
+        .attr("text-anchor", "middle")
+        .attr("x", width / 2 + width / 6 + 50)
+        .attr("y", 20)
+        .attr("font-size", "18px")
+      title.text((d) -> d.properties.store.city)
       
-      img.transition()
-        .duration(100)
+      # img.transition()
+        # .duration(100)
         # .attr("x", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0])
         # .attr("y", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1])
         
@@ -120,10 +135,11 @@ WorldPlot = () ->
 
 
   addData = (timediff) ->
-    if (timediff - lastSec) < 2000
+    if (lastSec >= 0) and (timediff - lastSec) < 5000
       return false
     else
       lastSec = timediff
+    # console.log('go ' + timediff)
     rtn = false
     # console.log(startTime)
     # randomStore = d3.values(locations)[Math.floor(Math.random() * d3.values(locations).length)]
@@ -132,13 +148,14 @@ WorldPlot = () ->
     # data.push({"type":"Feature", "id":i, "geometry":{"type":"Point", "coordinates":[lon,lat]},"properties":{'time':Date.now()}})
     # randomStore.count += 1
 
+    startTime.setMinutes(startTime.getMinutes() + 1)
+
     data = allData.filter (d) ->
       d.properties.time < startTime
 
     allData = allData.filter (d) ->
       d.properties.time >= startTime
 
-    startTime.setMinutes(startTime.getMinutes() + 1)
 
     if startTime > endTime
       rtn = true
@@ -164,7 +181,7 @@ WorldPlot = () ->
 
     temps.transition()
       .duration(600)
-      .delay((d,i) -> i * 100)
+      .delay((d,i) -> i * 200)
       .attr("r", 80)
       .attr("cx", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0])
       .attr("cy", (d,i) -> projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1])
@@ -182,7 +199,7 @@ WorldPlot = () ->
     locs = {}
     stores.forEach (s) ->
       locs[s.store] = s
-      locs[s.store].count = 0
+      locs[s.store].count = 1
     locs
 
   parseData = (rawData) ->
@@ -192,7 +209,7 @@ WorldPlot = () ->
       d.id = d.store_num + "_" + d.style_id + "_" + d.hh_mm
       store = locations[d.store_num]
       if !store
-        console.log('no store for ' + d.store_num)
+        # console.log('no store for ' + d.store_num)
         store = d3.values(locations)[25]
       g = {"type":"Feature", "id":d.id, "geometry":{"type":"Point", "coordinates":[store.lng,store.lat]},"properties":{'time':d.date, 'store_num':d.store_num, 'name':d.name,'img_url':d.img_url, 'store':store}}
       geoData.push(g)
@@ -273,9 +290,13 @@ WorldPlot = () ->
 
       cities = g.append("g").attr("id", "vis_cities")
       points = g.append("g").attr("id", "vis_points")
+      updateCities(100)
 
 
   chart.start = () ->
+    d3.values(locations).forEach (c) ->
+      c.count = 0
+    updateCities(10)
     d3.timer(addData, 200)
 
   chart.height = (_) ->
