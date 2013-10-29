@@ -269,7 +269,7 @@
             <li class="fragment">Quick prototyping is the fastest way to internal advocacy.</li><br>
             <li class="fragment">We don't always need a complicated solution.</li><br>
             <li class="fragment">Play to your differentiating strengths.</li><br>
-            <li class="fragment">Range of possible deliverables requiring different skillsets.</li>
+            <li class="fragment">Bias towards impact.</li>
           </ul>
         </section>
 
@@ -308,7 +308,7 @@
           <img class="plain" src="images/pixels/pixel_extraction.004.png" />
         </section>
 
-        <section data-transition="fade">
+       <!--  <section data-transition="fade">
           <h3>Color Extraction</h3>
           <img class="plain" src="images/pixels/pixel_extraction.005.png" />
         </section>
@@ -327,46 +327,7 @@
           <h3>Color Extraction</h3>
           <img class="plain" src="images/pixels/pixel_extraction.008.png" />
         </section>
-
-        <section>
-          <h3>Color Scoring Photos</h3>
-          <pre>
-            <code>
-  # Pseudo Python
-  from PIL import Image
-  from colormath.color_objects import RGBColor
-
-  photo = Image.open(photo_path)
-  for x, y in dimensions(photo):
-    # Extract the RGB color of each pixel
-    pixel_rgb = tuple(photo.getpixel((x, y)))
-
-    # Convert RGB to LAB
-    lab_color = RGBColor(pixel_rgb).convert_to('lab')
-
-    # Find the nearest match in the X11 color space
-    x11_color = x11_color_space.find_closest_match(lab_color)
-    color_counter.increment(x11_color)
-
-  # Take the top colors
-  top_colors = color_counter.top_colors(min_score=.17)
-
-  # Update the product metadata with the color scores
-  product_metadata.set('color_scores', top_colors)
-            </code>
-          </pre>
-        </section>
-
-         <!--  <ol>
-            <li>Load pattern swatch for every garment photo</li>
-            <li>Python Imaging Library (PIL) to extract RGB of each pixel</li>
-            <li>Convert pixel from RGB to LAB and map to nearest standard color (i.e. X11 color space)</li>
-            <li>Throw away colors that don't meet minimum threshold</li>
-            <li>Calculate % of pixels each remaining color comprises</li>
-            <li>Augment product meta-data with color score data</li>
-          </ol> -->
-        </section>        
-
+ -->
         <section>
           <h3>X11 Color Space</h3>
           <img class="plain" src="images/x11_colors.png" />
