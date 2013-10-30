@@ -532,7 +532,7 @@ $ ->
   display = (error, data) ->
     setupSearch(data)
     plotData("#vis", data, plot)
-    plot.start()
+    #plot.start()
 
   queue()
     # .defer(d3.tsv, "data/color_palettes_rgb.txt")
