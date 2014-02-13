@@ -1,0 +1,106 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>My Color Trends - Nordstrom Data Lab</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/tipsy.css">
+  <link rel="stylesheet" href="css/typeahead.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- end CSS-->
+
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body>
+  <div id="container" class="container">
+    <!-- <div class='row'> -->
+    <!--   <div class="col-md-4"> -->
+    <!--     <div id="logo"> -->
+    <!--       <a href="#"><img src="img/logo.png" alt="my color trends"/></a> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!--   <div class="col-md-8"> -->
+    <!--     <h1 id="name"></h1> -->
+    <!--   </div> -->
+    <!-- </div> -->
+    <div id="g-menu-style" class="g-menu">
+      <div class="g-menu-button g-menu-button-selected" id="g-button-top">
+        <div class="g-button-text">Top Colors</div>
+      </div>
+      <div class="g-menu-button" id="g-button-amounts">
+        <div class="g-button-text">Color Amounts</div>
+      </div>
+    </div>
+    <div id="main" role="main">
+      <div id="vis"></div>
+      <!-- <div id="share_buttons"  data-title="" data-id="" data-summary="" data-uri=""> -->
+      <!--   <p><strong>Share Your Color Trends:</strong>  -->
+      <!--   <a class="share_button" data-action-type="Share via Facebook" data-actions="click" data-button-type="facebook" data-category="Sharing" title="Share on Facebook" href="#">Facebook</a> |  -->
+      <!--   <a class="share_button" href="#" data-action-type="Share via Twitter" data-actions="click" data-button-type="twitter" data-category="Sharing" title="Share on Twitter">Twitter</a> |  -->
+      <!--   <a class="share_button" href="#" data-action-type="Share via Pintrest" data-actions="click" data-button-type="pintrest" data-category="Sharing" title="Share on Pintrest">Pintrest</a></p> -->
+      <!-- </div> -->
+      <div id="rec_section" class='hidden'>
+        <div id="g-menu-recs" class="g-menu">
+          <div class="g-menu-button g-menu-button-selected" id="g-button-match">
+            <div class="g-button-text">Same Color</div>
+          </div>
+          <div class="g-menu-button" id="g-button-comp">
+            <div class="g-button-text">Complementary Colors</div>
+          </div>
+        </div>
+        <div id="rec_content" class="row"></div>
+      </div> <!--! rec_section -->
+      <div id="timeline_section">
+        <div id="g-menu-timeline" class="g-menu">
+          <div class="g-menu-item g-menu-button-selected" id="g-button-timeline">
+            <div class="g-button-text">Timeline</div>
+          </div>
+        </div>
+        <div id="timeline"></div>
+      </div>
+    </div> 
+    <div id="footer">
+    </div>
+  </div> <!--! end of #container -->
+
+
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.10.2.min.js"><\/script>')</script>
+
+
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script src="js/libs/coffee-script.js"></script>
+  <script src="js/libs/d3.v3.js"></script>
+  <script src="js/libs/bootstrap.min.js"></script>
+  <script src="js/libs/queue.min.js"></script>
+  <script src="js/libs/typeahead.js"></script>
+  <script src="js/socialighter.js"></script>
+  <script src="js/CustomTooltip.js"></script>
+  <script type="text/coffeescript" src="coffee/tri.coffee"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+    });
+  </script>
+
+
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
