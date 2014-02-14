@@ -50,7 +50,7 @@ Timeline = () ->
 
   mouseover = (d,i) ->
     # console.log(baseName(d.image_url))
-    content = "<img src='../img/#{baseName(d.image_url)}' height='365px' width='240px' />"
+    content = "<img src='img/#{baseName(d.image_url)}' height='365px' width='240px' />"
     tooltip.showTooltip(content,d3.event)
     # console.log(d)
 
@@ -334,7 +334,7 @@ Triangles = () ->
     [0..3].forEach (i) ->
       if recs[i]
         # jpegs.push(recs[i].image_url.replace(/Medium/, "Thumbnail"))
-        jpegs.push("../img/" + baseName(recs[i].image_url))
+        jpegs.push("img/" + baseName(recs[i].image_url))
         links.push(recs[i].web_url)
 
     d3.select("#rec_content").html("")
