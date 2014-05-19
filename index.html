@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Nordstrom Data Lab - Strata Conference Presentation</title>
+		<title>Nordstrom Data Lab - Novo Nordisk Presentation</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="">
@@ -34,6 +34,13 @@
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
+  <nav>
+  <a href="/html/">Our Stylists Suggest</a></br>
+    <a href="/js/">My Color Trends</a>
+    <a href="/jquery/">Returns</a>
+    <a href="/jquery/">Fulfillment</a>
+    <a href="/jquery/">Segmento!</a>
+  </nav>
 
 	<body>
 
@@ -43,11 +50,11 @@
 			<div class="slides">
 
 				<section>
-					<h3>How Nordstrom Utilizes Human Intelligence to Blend Brick-and-mortar with Online Commerce</h3>
+        <h3>Building and delivering data-driven products at Nordstrom</h3><br/>
 					<p>
 						<small>
-							<a href="">Erin Shellman PhD - Data Scientist - @erinshellman</a><br/>
-							<a href="">David Von Lehman - Developer - @davidvlsea</a>
+              <a href="https://twitter.com/MissMissLiss">Elissa Brown - Data Scientist - @missmissliss</a><br/>
+							<a href="https://twitter.com/erinshellman">Erin Shellman - Data Scientist - @erinshellman</a>
 						</small>
 					</p>
 				</section>
@@ -58,12 +65,12 @@
         </section>
 
 				<section>
-					<h3>How Nordstrom Utilizes Human Intelligence to Blend Brick-and-mortar with Online Commerce</h3>
+        <h3>Building and delivering data-driven products at Nordstrom</h3><br/>
 					<p>
 						<small>
-              <a href="">Erin Shellman PhD - Data Scientist - @erinshellman</a><br/>
-              <a href="">David Von Lehman - Developer - @davidvlsea</a>
-            </small>
+              <a href="https://twitter.com/MissMissLiss">Elissa Brown - Data Scientist - @missmissliss</a><br/>
+							<a href="https://twitter.com/erinshellman">Erin Shellman - Data Scientist - @erinshellman</a>
+						</small>
 					</p>
 				</section>
 
@@ -135,14 +142,59 @@
         </section>
 
         <section>
-          <h3>Three Applications of EASE</h3>
+          <h3>Applications</h3>
           <p>
             <ol>
               <li>Our Stylists Suggest</li>
-              <li>Recommendo API</li>
               <li>My Color Palette</li>
+              <li>Returns</li>
+              <li>Fulfillment</li>
+              <li>Segmento</li>
             </ol>
           </p>
+        </section>
+
+        <section>
+            <blockquote id="human_machine_quote">
+              We ask our people in the stores to use good judgment.  The ultimate objective is taking care of the customer.  You really can't have a rule book that takes into account every scenario. We're just going to stand behind our merchandise.
+            </blockquote>
+        </section>
+
+        <section data-transition="fade">
+          <img class = 'plain' src="images/returns_1.png"/>
+        </section>       
+        
+        <section data-transition="fade">
+          <img class = 'plain' src="images/returns_2.png"/>
+        </section>
+
+        <section>
+          <h3>Returns Applications</h3>
+          <ul>
+            <li>Help customers find products in the best size for them to prevent returns</li>
+            <li>Serving better recommendations by incorporating knowledge about return patterns</li>
+            <li>Email outreach for high-risk customers</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Fulfillment</h3>
+          <img class = 'plain' src="images/fulfillment_diagram.png"/>
+        </section>
+
+        <section>
+          <h3>Fulfillment</h3>
+          <img class = 'plain' src="images/forecast_figures.002.png"/>
+        </section>
+
+        <section>
+          <h3>Fulfillment</h3>
+          <img class = 'plain' src="images/forecast_figures.003.png"/>
+        </section>
+
+        <section>
+          <h3>Fulfillment</h3>
+          <img class = 'plain' src="images/forecast_figures.004.png"/>
         </section>
 
         <section>
@@ -258,23 +310,13 @@
             <li class="fragment">Live in production as of Nov 24, 3 billion+ recommendations served</li><br>
             <li class="fragment">Full self-service infrastructure in the cloud</li><br>
             <li class="fragment">Continous delivery/deployment from day 1</li><br>
-            <li class="fragment">Next up - more personalized, size + brand</li><br>
-            <li class="fragment">If you build it, they will come</li>
+            <li class="fragment">2.0 - Real-time personalization and SKU-level inventory</li><br>
           </ul>
         </section>
 
         <section>
-          <img class="plain" src="images/recommendo_conversion.png" />
-        </section>
-
-        <section>
-          <h3>Preview Tool</h3>
+          <h3>Recommendo 2.0 Preview Tool</h3>
           <img class="plain" src="images/recommendo_preview.png" />
-        </section>
-
-        <section>
-          <h3>Cloud Monitoring</h3>
-          <img class="plain" src="images/aws_dashboard.png" />
         </section>
 
         <section>
@@ -288,20 +330,9 @@
             <li class="fragment">Cloud == Speed</li>
           </ul>
         </section>
-
+        
         <section>
-          <h3>An Exploration of Color</h3>
-          <img src="images/color_wheel.png" class="plain" />
-        </section>
-
-        <section>
-          <h3>Pixels as Data</h3>
-          <iframe class="stretch" src="slides/photo_zoom/index.html"></iframe>
-        </section>
-
-        <section>
-          <h3>Photo Studio Expertise</h3>
-          <img class="plain" src="images/swatch_extract.png" />
+          <h3>Color Transition</h3>
         </section>
 
         <section data-transition="fade">
@@ -324,36 +355,6 @@
           <img class="plain" src="images/pixels/pixel_extraction.004.png" />
         </section>
 
-       <!--  <section data-transition="fade">
-          <h3>Color Extraction</h3>
-          <img class="plain" src="images/pixels/pixel_extraction.005.png" />
-        </section>
-
-        <section data-transition="fade">
-          <h3>Color Extraction</h3>
-          <img class="plain" src="images/pixels/pixel_extraction.006.png" />
-        </section>
-
-        <section data-transition="fade">
-          <h3>Color Extraction</h3>
-          <img class="plain" src="images/pixels/pixel_extraction.007.png" />
-        </section>
-
-        <section data-transition="fade">
-          <h3>Color Extraction</h3>
-          <img class="plain" src="images/pixels/pixel_extraction.008.png" />
-        </section>
- -->
-        <section>
-          <h3>X11 Color Space</h3>
-          <img class="plain" src="images/x11_colors.png" />
-        </section>
-
-        <section>
-          <h3>Color Scoring </h3>
-          <img class="plain" src="images/color_scoring_1.png" />
-        </section>
-
         <section>
           <h3>Color Patterns</h3>
           <img class="plain" src="images/color_scoring_2.png" />
@@ -370,21 +371,6 @@
           <iframe class="stretch" id="color_trends_iframe" src="slides/color_seasons/index.html"></iframe>
           <div class="fragment" id="color_trends_start"></div>
           <div class="fragment" id="color_trends_update"></div>
-        </section>
-
-        <section>
-          <h3>Top Products by Color Score</h3>
-          <iframe class="stretch" src="slides/regional_top_products/index.html"></iframe>
-        </section>
-
-        <section>
-          <h3>Precise Color Match</h3>
-          <iframe class="stretch" src="slides/color_match/index.html"></iframe>
-        </section>
-
-        <section>
-          <h3>Pantone Bump</h3>
-          <img class="plain" src="images/pantone_bump.png" />
         </section>
 
         <section data-state="start_fingerprints">
@@ -406,6 +392,11 @@
         </section>
 
         <section>
+          <h3>Precise Color Match</h3>
+          <iframe class="stretch" src="slides/color_match/index.html"></iframe>
+        </section>
+
+        <section>
           <h3>Wrap Up</h3>
           <ul>
             <li class="fragment">It Takes a Village</li>
@@ -417,12 +408,11 @@
         </section>
 
        	<section>
-          <a><img class="plain" src="images/DataLab-04.png" align = "center" width = "60%", height = "40%"/></a>
+          <a><img class="plain" src="images/DataLab-04.png" align = "center" width = "60%", height = "40%"/></a></br>
           <a><img class="plain" src="images/Profile_jason.png" align = "center" width = "20%", height = "30%"/></a>
           <a><img class="plain" src="images/Profile_arun.png" align = "center" width = "20%", height = "30%"/></a>
           <a><img class="plain" src="images/Profile_jWill.png" align = "center" width = "20%", height = "30%"/></a>
           <a><img class="plain" src="images/Profile_erin.png" align = "center" width = "20%", height = "30%"/></a>
-          <a><img class="plain" src="images/Profile_jimS.png" align = "center" width = "20%", height = "30%"/></a>
           <a><img class="plain" src="images/Profile_jimV.png" align = "center" width = "20%", height = "30%" /></a>
           <a><img class="plain" src="images/Profile_elissa.png" align = "center" width = "20%", height = "30%"/></a>
           <a><img class="plain" src="images/Profile_david.png" align = "center" width = "20%", height = "30%"/></a>
