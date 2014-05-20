@@ -1,3 +1,2 @@
-This is the Nordstrom Data Lab presentation for the Strata Conference in NYC October 28-30, 2013.
+This is the Nordstrom Data Lab presentation to Novo Nordisk.
 
-http://strataconf.com/stratany2013/public/schedule/detail/30707

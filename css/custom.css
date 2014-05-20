@@ -22,3 +22,96 @@ img.logo {
 iframe {
 	overflow: hidden;
 }
+
+nav ul {
+	list-style: none; 
+  overflow: hidden; 
+  position: relative;
+}
+
+nav ul li {
+  float: left; 
+  margin: 0 20px 0 0;
+}
+
+nav ul li a {
+  display: block; 
+  width: 120px; 
+  height: 120px;
+  background-repeat: no-repeat;
+}
+
+/* Our Stylists Suggest */
+nav ul li:nth-child(1) a {
+  background-image: url('../images/icons/bag.png');
+  background-position: center;
+  background-size: 40% auto;
+  background-color: #999999;
+}
+
+/* My Color Trends */
+nav ul li:nth-child(2) a {
+  background-image: url('../images/icons/color.png');
+  background-position: center;
+  background-size: 40% auto;
+  background-color: #999999;
+}
+
+/* Returns */
+nav ul li:nth-child(3) a {
+  background-image: url('../images/icons/receipt.png');
+  background-position: center;
+  background-size: 40% auto;
+  background-color: #999999;
+}
+
+/* Fulfillment */
+nav ul li:nth-child(4) a {
+  background-image: url('../images/icons/fulfillment.png');
+  background-position: center;
+  background-size: 40% auto;
+  background-color: #999999;
+}
+
+/* Segmento */
+nav ul li:nth-child(5) a {
+  background-image: url('../images/icons/segment.png');
+  background-position: center;
+  background-size: 40% auto;
+  background-color: #999999;
+}
+		
+nav ul li a span {
+  font-family: "brandon-grotesque", "Brandon Grotesque", sans-serif;
+	font: 30px "Brandon Grotesque", sans-serif; 
+	position: absolute; 
+  left: 880px; 
+  top: 29px;
+	display: none;
+}
+
+nav ul li a:hover span {
+  display: block;
+}
+
+nav ul li:nth-child(1) a span {
+  color: #000000;
+}
+
+nav ul li:nth-child(2) a span {
+  color: #000000;
+}
+
+nav ul li:nth-child(3) a span {
+  color: #000000;
+}
+
+nav ul li:nth-child(4) a span {
+  color: #000000;
+}
+
+nav ul li:nth-child(5) a span {
+  color: #000000;
+}
+
+
