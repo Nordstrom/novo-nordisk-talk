@@ -45,7 +45,7 @@ nav ul li a {
 nav ul li:nth-child(1) a {
   background-image: url('../images/icons/team.png');
   background-position: center;
-  background-size: 60% auto;
+  background-size: 80% auto;
   background-color: #999999;
   background-color: rgba(167, 170, 169, 0.50);
   border-radius: 20px;
@@ -86,7 +86,7 @@ nav ul li:nth-child(4) a {
 nav ul li:nth-child(5) a {
   background-image: url('../images/icons/fulfillment.png');
   background-position: center;
-  background-size: 60% auto;
+  background-size: 70% auto;
   background-color: rgba(167, 170, 169, 0.50);
   border-radius: 20px;
   opacity: 0.70;
@@ -96,7 +96,7 @@ nav ul li:nth-child(5) a {
 nav ul li:nth-child(6) a {
   background-image: url('../images/icons/segment.png');
   background-position: center;
-  background-size: 80% auto;
+  background-size: 100% auto;
   background-color: rgba(167, 170, 169, 0.50);
   border-radius: 20px;
   opacity: 0.70;
