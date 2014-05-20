@@ -43,42 +43,63 @@ nav ul li a {
 
 /* Our Stylists Suggest */
 nav ul li:nth-child(1) a {
+  background-image: url('../images/icons/team.png');
+  background-position: center;
+  background-size: 60% auto;
+  background-color: #999999;
+  background-color: rgba(167, 170, 169, 0.50);
+  border-radius: 20px;
+  opacity: 0.70;
+}
+
+/* Our Stylists Suggest */
+nav ul li:nth-child(2) a {
   background-image: url('../images/icons/bag.png');
   background-position: center;
-  background-size: 40% auto;
-  background-color: #999999;
+  background-size: 60% auto;
+  background-color: rgba(167, 170, 169, 0.50);
+  border-radius: 20px;
+  opacity: 0.70;
 }
 
 /* My Color Trends */
-nav ul li:nth-child(2) a {
+nav ul li:nth-child(3) a {
   background-image: url('../images/icons/color.png');
   background-position: center;
-  background-size: 40% auto;
-  background-color: #999999;
+  background-size: 60% auto;
+  background-color: rgba(167, 170, 169, 0.50);
+  border-radius: 20px;
+  opacity: 0.70;
 }
 
 /* Returns */
-nav ul li:nth-child(3) a {
+nav ul li:nth-child(4) a {
   background-image: url('../images/icons/receipt.png');
   background-position: center;
-  background-size: 40% auto;
-  background-color: #999999;
+  background-size: 60% auto;
+  background-color: rgba(167, 170, 169, 0.50);
+  border-radius: 20px;
+  opacity: 0.70;
 }
 
 /* Fulfillment */
-nav ul li:nth-child(4) a {
+nav ul li:nth-child(5) a {
   background-image: url('../images/icons/fulfillment.png');
   background-position: center;
-  background-size: 40% auto;
-  background-color: #999999;
+  background-size: 60% auto;
+  background-color: rgba(167, 170, 169, 0.50);
+  border-radius: 20px;
+  opacity: 0.70;
 }
 
 /* Segmento */
-nav ul li:nth-child(5) a {
+nav ul li:nth-child(6) a {
   background-image: url('../images/icons/segment.png');
   background-position: center;
-  background-size: 40% auto;
-  background-color: #999999;
+  background-size: 80% auto;
+  background-color: rgba(167, 170, 169, 0.50);
+  border-radius: 20px;
+  opacity: 0.70;
 }
 		
 nav ul li a span {
@@ -113,5 +134,11 @@ nav ul li:nth-child(4) a span {
 nav ul li:nth-child(5) a span {
   color: #000000;
 }
+
+nav ul li:nth-child(6) a span {
+  color: #000000;
+}
+
+
 
 
