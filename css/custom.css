@@ -62,18 +62,8 @@ nav ul li:nth-child(2) a {
   opacity: 0.70;
 }
 
-/* My Color Trends */
-nav ul li:nth-child(3) a {
-  background-image: url('../images/icons/color.png');
-  background-position: center;
-  background-size: 60% auto;
-  background-color: rgba(167, 170, 169, 0.50);
-  border-radius: 20px;
-  opacity: 0.70;
-}
-
 /* Returns */
-nav ul li:nth-child(4) a {
+nav ul li:nth-child(3) a {
   background-image: url('../images/icons/receipt.png');
   background-position: center;
   background-size: 60% auto;
@@ -83,10 +73,20 @@ nav ul li:nth-child(4) a {
 }
 
 /* Fulfillment */
-nav ul li:nth-child(5) a {
+nav ul li:nth-child(4) a {
   background-image: url('../images/icons/fulfillment.png');
   background-position: center;
   background-size: 70% auto;
+  background-color: rgba(167, 170, 169, 0.50);
+  border-radius: 20px;
+  opacity: 0.70;
+}
+
+/* My Color Trends */
+nav ul li:nth-child(5) a {
+  background-image: url('../images/icons/color.png');
+  background-position: center;
+  background-size: 60% auto;
   background-color: rgba(167, 170, 169, 0.50);
   border-radius: 20px;
   opacity: 0.70;
